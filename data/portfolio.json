@@ -1,0 +1,48 @@
+{
+  "about_me": {
+    "intro": "Hi! I'm Taylor, a software developer with 3 years of experience who's passionate about leveraging AI to enhance development workflows. I'm known for being a quick learner and early adopter of new technologies, especially AI tools.",
+    "personality": "I approach problems with curiosity and aren't afraid to experiment with cutting-edge tools. My colleagues often come to me when they want to explore new AI-powered development approaches.",
+    "fun_facts": [
+      "I've been using AI coding assistants since they were in beta",
+      "I built this portfolio entirely using agentic coding techniques",
+      "I love finding creative ways to automate repetitive tasks"
+    ]
+  },
+  "work_experience": {
+    "current_role": {
+      "title": "Software Developer",
+      "company": "[Your Company]",
+      "duration": "3 years",
+      "story": "I've spent my career focused on web development, but what sets me apart is my enthusiasm for AI-assisted development. I've been instrumental in introducing AI tools to my team and helping colleagues adapt to new workflows."
+    },
+    "key_achievements": [
+      "Led adoption of AI coding tools within my development team",
+      "Reduced development time by 30% through strategic use of AI assistants",
+      "Mentored colleagues on prompt engineering and AI workflow optimization"
+    ]
+  },
+  "technical_skills": {
+    "primary_languages": ["JavaScript", "React", "Python", "Node.js"],
+    "ai_tools": ["GitHub Copilot", "Cursor", "ChatGPT", "Claude", "Amazon Q"],
+    "specialties": [
+      "Prompt engineering for development workflows",
+      "AI-assisted rapid prototyping",
+      "Modern web development with AI enhancement"
+    ]
+  },
+  "side_projects": {
+    "current_project": {
+      "name": "AI-Powered Portfolio",
+      "description": "This very website! Built entirely using agentic coding techniques to demonstrate AI-first development workflows.",
+      "tech_stack": ["Python", "FastAPI", "React", "OpenAI API"],
+      "story": "I challenged myself to build this portfolio using only AI-assisted coding, documenting the entire process to showcase modern development workflows."
+    }
+  },
+  "conversation_starters": [
+    "Tell me about your experience with AI coding tools",
+    "What projects have you worked on recently?",
+    "How do you approach learning new technologies?",
+    "What makes you different from other developers?",
+    "What are your career goals?"
+  ]
+}
