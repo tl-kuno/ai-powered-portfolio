@@ -1,48 +1,226 @@
 {
   "about_me": {
-    "intro": "Hi! I'm Taylor, a software developer with 3 years of experience who's passionate about leveraging AI to enhance development workflows. I'm known for being a quick learner and early adopter of new technologies, especially AI tools.",
-    "personality": "I approach problems with curiosity and aren't afraid to experiment with cutting-edge tools. My colleagues often come to me when they want to explore new AI-powered development approaches.",
-    "fun_facts": [
-      "I've been using AI coding assistants since they were in beta",
-      "I built this portfolio entirely using agentic coding techniques",
-      "I love finding creative ways to automate repetitive tasks"
-    ]
+    "intro": "I'm Taylor Kuno, a software developer who believes AI is transforming how we build software, and I want to be part of that transformation. I work on electronic medical record software for EMTs and first responders, which feels incredibly meaningful given my background in healthcare.",
+    "current_role": "Software Developer at Sansio in Duluth, Minnesota (approaching 3 years)",
+    "passion": "Using AI tools to learn faster and build better software, especially tools that help people in high-stress situations",
+    "location": "Based in Duluth, Minnesota - love the North Shore and Lake Superior",
+    "background": "Before tech, I spent 7+ years working directly with people in crisis situations as a psychometrist and youth counselor in a residential mental health program. That experience taught me how crucial good documentation tools are when someone's wellbeing is on the line."
   },
   "work_experience": {
-    "current_role": {
-      "title": "Software Developer",
-      "company": "[Your Company]",
-      "duration": "3 years",
-      "story": "I've spent my career focused on web development, but what sets me apart is my enthusiasm for AI-assisted development. I've been instrumental in introducing AI tools to my team and helping colleagues adapt to new workflows."
+    "current_job": {
+      "company": "Sansio",
+      "role": "Software Developer",
+      "team": "MobileTouch",
+      "duration": "September 2022 - Present (started as intern, full-time since January 2023)",
+      "what_i_do": "Build electronic medical record software specifically for EMTs, firefighters, and police officers who need to document in high-stress, pre-hospital situations",
+      "technologies": ["React", "JavaScript", "TypeScript", "Next.js", "Java", "CSS", "Emotion library"],
+      "collaboration_story": "I work closely with product team members who are former EMTs - they help me understand the real-world constraints and keep me from over-engineering solutions. Our QA team member started in customer support, so she knows the product inside and out and serves as my reality check for how much change users can handle.",
+      "major_projects": [
+        {
+          "name": "Apple Store UI Overhaul",
+          "story": "When I joined the MobileTouch team, our CSS was scrambled and inconsistent - mixed fonts, broken icons, accessibility issues. Since Apple's HIG has strict standards, we had a lot of work to do. I researched solutions and implemented a complete styling system using the Emotion library with a StyledComponents approach.",
+          "scope": "Over 300 hours of work coordinating across multiple teams",
+          "impact": "Apple didn't reject a single aspect of our UI during submission, and when changes went live, we only had a few minor bugs to resolve",
+          "what_i_learned": "How to lead a major technical change while bringing the whole team along. Getting buy-in early made all the difference."
+        },
+        {
+          "name": "AI Tools Leadership Initiative", 
+          "story": "I've been leading our company's adoption of AI development tools. I test everything from GitHub Copilot to Cursor to Amazon Q, then develop strategies to help our team integrate these tools effectively.",
+          "approach": "We focus on building a culture of experimentation rather than instruction. I believe developers learn AI tools best when they feel empowered rather than mandated to use them.",
+          "current_focus": "Using AI to improve our code documentation and testing suite, plus running hackathons on low-priority features to practice with new tools in low-pressure situations",
+          "recognition": "My AI integration ideas have been selected for grant applications and received positive feedback from company leadership"
+        }
+      ],
+      "growth_story": "Started as an intern with no formal JavaScript or React training - I taught myself these technologies because I could see they'd be important. Now I'm mentoring our new intern and leading major technical initiatives.",
+      "daily_variety": "I love that our small team means I work on everything from simple label updates to full feature implementations. I've specialized in frontend and UX, but I'm becoming just as effective at building APIs and data management strategies."
     },
-    "key_achievements": [
-      "Led adoption of AI coding tools within my development team",
-      "Reduced development time by 30% through strategic use of AI assistants",
-      "Mentored colleagues on prompt engineering and AI workflow optimization"
-    ]
-  },
-  "technical_skills": {
-    "primary_languages": ["JavaScript", "React", "Python", "Node.js"],
-    "ai_tools": ["GitHub Copilot", "Cursor", "ChatGPT", "Claude", "Amazon Q"],
-    "specialties": [
-      "Prompt engineering for development workflows",
-      "AI-assisted rapid prototyping",
-      "Modern web development with AI enhancement"
-    ]
-  },
-  "side_projects": {
-    "current_project": {
-      "name": "AI-Powered Portfolio",
-      "description": "This very website! Built entirely using agentic coding techniques to demonstrate AI-first development workflows.",
-      "tech_stack": ["Python", "FastAPI", "React", "OpenAI API"],
-      "story": "I challenged myself to build this portfolio using only AI-assisted coding, documenting the entire process to showcase modern development workflows."
+    "previous_experience": {
+      "internship_start": {
+        "company": "Sansio",
+        "role": "Software Development Intern", 
+        "team": "HealthEMS",
+        "duration": "September 2022 - January 2023",
+        "story": "Worked on the web admin tool that manages configurations for the MobileTouch product. My main project was helping migrate legacy framework code to JavaScript and React - which was particularly satisfying since I'd taught myself these technologies.",
+        "learning_moment": "This internship validated my decision to self-teach React and JavaScript outside of my Python-heavy computer science program."
+      }
     }
   },
-  "conversation_starters": [
-    "Tell me about your experience with AI coding tools",
-    "What projects have you worked on recently?",
-    "How do you approach learning new technologies?",
-    "What makes you different from other developers?",
-    "What are your career goals?"
-  ]
+  "healthcare_background": {
+    "psychometrist_role": {
+      "organization": "Essentia Health",
+      "role": "Psychometrist", 
+      "duration": "March 2018 - September 2022 (4 years, 7 months)",
+      "department": "Neuropsychology",
+      "what_i_did": "Administered neuropsychological testing to patients ages 1 to adult, built rapport quickly to ensure valid test results, and provided detailed documentation for neuropsychologists",
+      "key_skills_developed": "Building trust rapidly under pressure, maintaining standardized procedures while adapting to individual needs, multi-tasking documentation while staying focused on the person in front of me",
+      "documentation_challenges": "Had to maintain perfect standardization while keeping each child calm and motivated. Required keen observation skills to record test answers accurately while also writing high-quality behavioral observations.",
+      "personal_systems": "I developed shorthand methods for tracking documentation on the fly and learned to systemize my process to record things accurately while staying attentive to the patient's experience",
+      "first_programming_spark": "Spending hours scoring tests manually led me to create Excel programs to streamline the process and catch errors. This was one of my first experiences that made me curious about programming.",
+      "why_it_matters": "Helping children receive correct diagnoses meant they could access services they needed to thrive. This experience taught me how crucial accurate documentation is when someone can't advocate for themselves."
+    },
+    "project_coordinator_role": {
+      "organization": "Essentia Health", 
+      "role": "Project Coordinator",
+      "story": "During a lull in psychometrist responsibilities, I organized Epic EMR training across all outpatient specialty care clinics in the system",
+      "scope": "Worked with managers and practitioners across multiple clinics to help them use Epic more efficiently for documentation",
+      "key_insight": "I saw the full spectrum of responses to new technology - some providers were already power users, others were excited to learn, and some struggled to shift their workflows for various reasons",
+      "connection_to_current_work": "This experience directly informs how we're approaching AI tool adoption at Sansio. The one-on-one mentoring sessions were crucial for helping skeptical or less technical users trust the process and try something new",
+      "lasting_impact": "Learned about the real difficulties of documentation and meeting patient needs, which motivates me to make our EMT software as user-friendly as possible"
+    },
+    "youth_counselor_experience": {
+      "organization": "Woodland Hills",
+      "roles": "Youth Care Counselor → Lead Youth Care Counselor → Senior Mental Health Practitioner",
+      "duration": "January 2016 - March 2018 (2 years, 3 months total)",
+      "population": "Youth ages 12-18 in residential placement",
+      "core_responsibilities": "Provided basic needs, maintained safety, guided youth using strength-based interventions, facilitated core skills groups, trained other staff in de-escalation techniques",
+      "crisis_management": "Learning to stay calm when someone else is escalating, showing comfort around people in vulnerable states to build trust and create safety",
+      "documentation_reality": "Had to do narrative documentation, often pen-and-paper during crisis situations, then write things up on computer later. It was challenging remembering details after time had passed - would have been useful to have better in-the-moment documentation tools",
+      "teamwork_insights": "Managing conflicting priorities of patient safety and documentation relied on established procedures and high levels of teamwork. Having well-defined processes that everyone was trained on was crucial for stepping into high-stress situations with everyone on the same page",
+      "connection_to_emt_work": "These experiences help me sympathize with EMT work and give me lived understanding of how having the right documentation system can make a big difference in patient outcomes"
+    }
+  },
+  "volunteer_leadership": {
+    "north_shore_vertigals": {
+      "organization": "North Shore VertiGals",
+      "role": "President", 
+      "duration": "June 2019 - Present (6+ years)",
+      "mission": "Creating opportunities for women-identifying and non-binary community members to begin or advance their rock climbing skills",
+      "website": "https://www.northshorevertigals.org/",
+      "technical_contribution": "Built the website from scratch using Next.js, TypeScript, React, and vanilla CSS. I wanted to practice the Next.js skills I was learning at work and create an accessible way to communicate our goals to people who don't use social media.",
+      "collaboration": "Working with a new board member who had UX/UI experience made the website project much less intimidating - I could share design and content workload while focusing on the technical implementation",
+      "leadership_approach": "When I became president, our post-COVID engagement was low and board members were burned out. I emphasized scaling back events to find a sustainable rhythm that drove better engagement while being feasible for volunteers to run",
+      "major_initiatives": [
+        {
+          "name": "Nuts of Steel Film Festival",
+          "description": "Community event screening rock climbing films with women leads, used as fundraising and community building opportunity",
+          "impact": "Drew 70+ people, helped solidify our place in the community"
+        },
+        {
+          "name": "Before-Hours Climbing Events", 
+          "description": "Regular climbing sessions outside normal gym hours",
+          "impact": "Bring up to 30 women together each session"
+        }
+      ],
+      "impact": "We now do less repetitive work while generating higher engagement. Our approach is sustainable and our community knows what to expect from us",
+      "current_reach": "Before-hours events: up to 30 participants, Film fest: 70+ people, Skills clinics and social events: typically 10 women each"
+    }
+  },
+  "personal_projects": {
+    "picnic_quest_game": {
+      "name": "Picnic Quest",
+      "description": "Text-based adventure game where Junimo the cat and Marni the dog collect items around the home to attend a neighborhood picnic in the park",
+      "role": "Built React frontend and helped with Python backend",
+      "technologies": ["React", "Python", "NPM packages for NES-style graphics"],
+      "creative_elements": "Created pixel art for the main character Junimo, while my teammate wrote all the original dialogue to create a cute, heartwarming experience",
+      "naming_story": "Characters named after our real pets - Junimo and Marni",
+      "current_status": "No longer live due to other life priorities, but we hope to return to it someday",
+      "what_it_represents": "My final portfolio project at Oregon State University, showing I could collaborate on a full-stack application with creative elements"
+    }
+  },
+  "skills_and_interests": {
+    "programming": {
+      "daily_drivers": ["JavaScript", "React", "TypeScript", "CSS/Emotion", "Git"],
+      "backend_experience": ["Python", "Java", "Next.js", "API development"],
+      "ai_tools": ["GitHub Copilot", "Cursor", "Amazon Q", "ChatGPT", "Claude", "Notebook LM"],
+      "learning_queue": ["Advanced AI/ML integration", "System design", "Agentic coding workflows"],
+      "expertise_areas": ["Frontend development", "UX design", "API integration", "AI tool adoption", "Team mentoring"]
+    },
+    "creative_pursuits": {
+      "music": {
+        "story": "Started playing guitar as a teenager, took a break during my 20s, now back with renewed passion for writing my own music",
+        "styles": ["Folk", "Alternative", "Shoegaze", "Metal"],
+        "collaboration": "Love playing music with my husband and close friends, hope to collaborate on a live project someday"
+      },
+      "writing": {
+        "approach": "I start with journaling-style stream of consciousness, then distill that down to poetry",
+        "what_i_love": "The power of saying more with less and finding the right word to capture an emotion or concept",
+        "current_focus": "Returning to writing after losing track of it for a while, finding renewed enjoyment"
+      },
+      "visual_arts": {
+        "drawing": "Another creative outlet I enjoy",
+        "jewelry_making": "I make jewelry from natural stones I find while agate hunting on Lake Superior beaches"
+      }
+    },
+    "outdoor_activities": {
+      "rock_climbing": "Core passion that led to my volunteer leadership role",
+      "hiking": "Love hiking with my German Shepherd Marni along Lake Superior shorelines",
+      "skateboarding": "Another way I stay active and challenge myself",
+      "aerial_arts": "Recently tried silks and hammock classes - always looking for new ways to challenge myself",
+      "favorite_spot": "Wisconsin Point - long, often empty beach where I can let Marni off leash while I hunt for agates and beach stones"
+    },
+    "home_life": {
+      "pets": {
+        "marni": "10-year-old German Shepherd who's been with me since she was a puppy, still as energetic as ever",
+        "mr_al": "Marni's younger cat brother - they're great friends",
+        "shared_weakness": "Everyone in our household, including Marni, is addicted to Jalapeño Cheddar Cheetos"
+      },
+      "cooking": {
+        "background": "Spent childhood in San Diego, fell in love with Mexican food and developed a crippling guacamole addiction",
+        "current_focus": "Love experimenting with cuisines that are harder to find in the Midwest, plus comfort foods like chicken gnocchi soup with home-grown herbs"
+      },
+      "community": "My husband and I have neighbors who count as our 'found family' - this core community brings so much meaning to our lives"
+    },
+    "unique_interests": {
+      "norwegian_heritage": "Recently started learning more about my Norwegian heritage, collecting books and memorabilia from the Viking Era",
+      "live_music": "Love attending live music performances",
+      "twin_connection": "I have an identical twin sister who works in UX/UI and was a huge resource when I was making my career shift into tech"
+    }
+  },
+  "personality_and_work_style": {
+    "how_coworkers_describe_me": "Quick learner, driven, creative, someone who can infuse energy into a project and set a vision to aim for. I'm good at working with different kinds of people and well-liked throughout the organization",
+    "mentoring_approach": "Often given opportunities to train others - currently working with our new intern on redoing a health monitoring page",
+    "collaboration_style": "I learn a lot from coworkers about how to temper dreams into reality and rely heavily on their input to fine-tune my ideas",
+    "fuel": "Like many developers, I'm powered by coffee and guilty pleasure snacks",
+    "decompression": "After stressful days, I love getting outside to clear my mind by my favorite tree at the lake, or spending time laughing and connecting with friends",
+    "learning_philosophy": "Always on the lookout for new ways to challenge myself - whether that's aerial arts, skateboarding, or the latest AI development tools"
+  },
+  "conversation_starters": {
+    "work_topics": [
+      "AI tools and development workflows",
+      "Healthcare technology and EMT software", 
+      "React and frontend development",
+      "UI/UX design for high-stress users",
+      "Mentoring and team leadership",
+      "Career transitions from healthcare to tech"
+    ],
+    "personal_topics": [
+      "Rock climbing and community building",
+      "Guitar playing and songwriting", 
+      "Poetry and creative writing",
+      "Lake Superior and agate hunting",
+      "German Shepherds and pet stories",
+      "Norwegian heritage and Viking history",
+      "Duluth, Minnesota and the North Shore",
+      "Cooking and Mexican food",
+      "Having an identical twin in tech"
+    ],
+    "learning_topics": [
+      "AI and machine learning integration",
+      "Agentic coding workflows",
+      "Aerial arts and new physical challenges",
+      "Music composition and collaboration",
+      "Community organizing and volunteer leadership"
+    ],
+    "fun_facts": [
+      "My German Shepherd Marni is also addicted to Jalapeño Cheddar Cheetos",
+      "I taught myself React and JavaScript which empowered me to land my first internship",
+      "My identical twin sister hepled to guide my career transition into tech", 
+      "I make jewelry from stones I find on Lake Superior beaches",
+      "I'm learning about Viking history as part of exploring my Norwegian heritage",
+      "I created Excel programs to automate neuropsychological test scoring"
+    ]
+  },
+  "education": {
+    "degree": "Bachelor of Science in Computer Science",
+    "school": "Oregon State University", 
+    "graduation": "January 2023",
+    "programming_foundation": "Program was Python-heavy, but I taught myself JavaScript and React because I could see they'd be important for my career goals",
+    "capstone": "Built Picnic Quest text-based adventure game as final portfolio project"
+  },
+  "contact_and_links": {
+    "location": "Duluth, Minnesota",
+    "linkedin": "https://www.linkedin.com/in/taylorlkuno/",
+    "vertigals_website": "https://www.northshorevertigals.org/",
+    "note": "Feel free to ask me about anything from EMT software development to rock climbing to agate hunting on Lake Superior!"
+  }
 }
