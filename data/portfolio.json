@@ -13,7 +13,15 @@
       "team": "MobileTouch",
       "duration": "September 2022 - Present (started as intern, full-time since January 2023)",
       "what_i_do": "Build electronic medical record software specifically for EMTs, firefighters, and police officers who need to document in high-stress, pre-hospital situations",
-      "technologies": ["React", "JavaScript", "TypeScript", "Next.js", "Java", "CSS", "Emotion library"],
+      "technologies": [
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "Next.js",
+        "Java",
+        "CSS",
+        "Emotion library"
+      ],
       "collaboration_story": "I work closely with product team members who are former EMTs - they help me understand the real-world constraints and keep me from over-engineering solutions. Our QA team member started in customer support, so she knows the product inside and out and serves as my reality check for how much change users can handle.",
       "major_projects": [
         {
@@ -24,7 +32,7 @@
           "what_i_learned": "How to lead a major technical change while bringing the whole team along. Getting buy-in early made all the difference."
         },
         {
-          "name": "AI Tools Leadership Initiative", 
+          "name": "AI Tools Leadership Initiative",
           "story": "I've been leading our company's adoption of AI development tools. I test everything from GitHub Copilot to Cursor to Amazon Q, then develop strategies to help our team integrate these tools effectively.",
           "approach": "We focus on building a culture of experimentation rather than instruction. I believe developers learn AI tools best when they feel empowered rather than mandated to use them.",
           "current_focus": "Using AI to improve our code documentation and testing suite, plus running hackathons on low-priority features to practice with new tools in low-pressure situations",
@@ -37,7 +45,7 @@
     "previous_experience": {
       "internship_start": {
         "company": "Sansio",
-        "role": "Software Development Intern", 
+        "role": "Software Development Intern",
         "team": "HealthEMS",
         "duration": "September 2022 - January 2023",
         "story": "Worked on the web admin tool that manages configurations for the MobileTouch product. My main project was helping migrate legacy framework code to JavaScript and React - which was particularly satisfying since I'd taught myself these technologies.",
@@ -48,7 +56,7 @@
   "healthcare_background": {
     "psychometrist_role": {
       "organization": "Essentia Health",
-      "role": "Psychometrist", 
+      "role": "Psychometrist",
       "duration": "March 2018 - September 2022 (4 years, 7 months)",
       "department": "Neuropsychology",
       "what_i_did": "Administered neuropsychological testing to patients ages 1 to adult, built rapport quickly to ensure valid test results, and provided detailed documentation for neuropsychologists",
@@ -59,7 +67,7 @@
       "why_it_matters": "Helping children receive correct diagnoses meant they could access services they needed to thrive. This experience taught me how crucial accurate documentation is when someone can't advocate for themselves."
     },
     "project_coordinator_role": {
-      "organization": "Essentia Health", 
+      "organization": "Essentia Health",
       "role": "Project Coordinator",
       "story": "During a lull in psychometrist responsibilities, I organized Epic EMR training across all outpatient specialty care clinics in the system",
       "scope": "Worked with managers and practitioners across multiple clinics to help them use Epic more efficiently for documentation",
@@ -82,7 +90,7 @@
   "volunteer_leadership": {
     "north_shore_vertigals": {
       "organization": "North Shore VertiGals",
-      "role": "President", 
+      "role": "President",
       "duration": "June 2019 - Present (6+ years)",
       "mission": "Creating opportunities for women-identifying and non-binary community members to begin or advance their rock climbing skills",
       "website": "https://www.northshorevertigals.org/",
@@ -96,7 +104,7 @@
           "impact": "Drew 70+ people, helped solidify our place in the community"
         },
         {
-          "name": "Before-Hours Climbing Events", 
+          "name": "Before-Hours Climbing Events",
           "description": "Regular climbing sessions outside normal gym hours",
           "impact": "Bring up to 30 women together each session"
         }
@@ -110,7 +118,11 @@
       "name": "Picnic Quest",
       "description": "Text-based adventure game where Junimo the cat and Marni the dog collect items around the home to attend a neighborhood picnic in the park",
       "role": "Built React frontend and helped with Python backend",
-      "technologies": ["React", "Python", "NPM packages for NES-style graphics"],
+      "technologies": [
+        "React",
+        "Python",
+        "NPM packages for NES-style graphics"
+      ],
       "creative_elements": "Created pixel art for the main character Junimo, while my teammate wrote all the original dialogue to create a cute, heartwarming experience",
       "naming_story": "Characters named after our real pets - Junimo and Marni",
       "current_status": "No longer live due to other life priorities, but we hope to return to it someday",
@@ -119,11 +131,34 @@
   },
   "skills_and_interests": {
     "programming": {
-      "daily_drivers": ["JavaScript", "React", "TypeScript", "CSS/Emotion", "Git"],
+      "daily_drivers": [
+        "JavaScript",
+        "React",
+        "TypeScript",
+        "CSS/Emotion",
+        "Git"
+      ],
       "backend_experience": ["Python", "Java", "Next.js", "API development"],
-      "ai_tools": ["GitHub Copilot", "Cursor", "Amazon Q", "ChatGPT", "Claude", "Notebook LM"],
-      "learning_queue": ["Advanced AI/ML integration", "System design", "Agentic coding workflows"],
-      "expertise_areas": ["Frontend development", "UX design", "API integration", "AI tool adoption", "Team mentoring"]
+      "ai_tools": [
+        "GitHub Copilot",
+        "Cursor",
+        "Amazon Q",
+        "ChatGPT",
+        "Claude",
+        "Notebook LM"
+      ],
+      "learning_queue": [
+        "Advanced AI/ML integration",
+        "System design",
+        "Agentic coding workflows"
+      ],
+      "expertise_areas": [
+        "Frontend development",
+        "UX design",
+        "API integration",
+        "AI tool adoption",
+        "Team mentoring"
+      ]
     },
     "creative_pursuits": {
       "music": {
@@ -139,6 +174,24 @@
       "visual_arts": {
         "drawing": "Another creative outlet I enjoy",
         "jewelry_making": "I make jewelry from natural stones I find while agate hunting on Lake Superior beaches"
+      }
+    },
+    "creative_projects": {
+      "zine_design": {
+        "name": "Dogshit Zine",
+        "description": "72-page visual publication designed for independent skate film - comprehensive layout design, typography, and photography curation project",
+        "collaboration": "Worked with filmmaker (my husband) on complete visual identity and publication design",
+        "scope": "Full project management from concept to digital publication",
+        "skills_demonstrated": [
+          "Visual design",
+          "Typography",
+          "Layout design",
+          "Photography curation",
+          "Project management",
+          "Cross-disciplinary collaboration"
+        ],
+        "link": "https://mixam.com/share/655a94a4cacdf40e33c91c33",
+        "note": "Tongue-in-cheek art project showcasing design range and personality"
       }
     },
     "outdoor_activities": {
@@ -177,7 +230,7 @@
   "conversation_starters": {
     "work_topics": [
       "AI tools and development workflows",
-      "Healthcare technology and EMT software", 
+      "Healthcare technology and EMT software",
       "React and frontend development",
       "UI/UX design for high-stress users",
       "Mentoring and team leadership",
@@ -185,7 +238,7 @@
     ],
     "personal_topics": [
       "Rock climbing and community building",
-      "Guitar playing and songwriting", 
+      "Guitar playing and songwriting",
       "Poetry and creative writing",
       "Lake Superior and agate hunting",
       "German Shepherds and pet stories",
@@ -204,7 +257,7 @@
     "fun_facts": [
       "My German Shepherd Marni is also addicted to Jalapeño Cheddar Cheetos",
       "I taught myself React and JavaScript which empowered me to land my first internship",
-      "My identical twin sister hepled to guide my career transition into tech", 
+      "My identical twin sister hepled to guide my career transition into tech",
       "I make jewelry from stones I find on Lake Superior beaches",
       "I'm learning about Viking history as part of exploring my Norwegian heritage",
       "I created Excel programs to automate neuropsychological test scoring"
@@ -212,7 +265,7 @@
   },
   "education": {
     "degree": "Bachelor of Science in Computer Science",
-    "school": "Oregon State University", 
+    "school": "Oregon State University",
     "graduation": "January 2023",
     "programming_foundation": "Program was Python-heavy, but I taught myself JavaScript and React because I could see they'd be important for my career goals",
     "capstone": "Built Picnic Quest text-based adventure game as final portfolio project"
