@@ -342,6 +342,13 @@ const ChatSection = () => {
     }
   };
 
+  const handleInputFocus = () => {
+    // Scroll back to chat when keyboard opens on iOS
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 300);
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -487,6 +494,7 @@ const ChatSection = () => {
                   value={inputValue}
                   onChange={e => setInputValue(e.target.value)}
                   onKeyDown={handleKeyPress}
+                  onFocus={handleInputFocus}
                   placeholder='Ask about my experience, projects, or anything else...'
                 />
                 <button
