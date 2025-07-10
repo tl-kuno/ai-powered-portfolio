@@ -30,7 +30,6 @@ const ExperienceCard = ({
   subtitle,
   description,
   questions,
-  imageUrl,
   link,
   links,
 }: ExperienceCardProps) => {
@@ -86,16 +85,11 @@ const ExperienceCard = ({
     </div>
   );
   const handleQuestionClick = (question: string) => {
-    // This will trigger the chat with the selected question
-    const chatInput = document.querySelector(
-      '.chat-input input'
-    ) as HTMLInputElement;
-    if (chatInput) {
-      chatInput.value = question;
-      chatInput.focus();
-    }
-    // Scroll to top to show chat
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Dispatch custom event to ChatSection
+    const event = new CustomEvent('questionClick', {
+      detail: { question },
+    });
+    window.dispatchEvent(event);
   };
 
   return (

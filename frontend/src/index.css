@@ -34,7 +34,7 @@ body {
   line-height: 1.6;
   color: var(--color-text-primary);
   background-color: var(--color-background);
-  background-image: url('/images/agate-texture-black 1.png');
+  background-image: url('/images/agate-texture-black.png');
   background-repeat: no-repeat;
   background-position: left top;
   background-size: auto 120vh;
@@ -44,7 +44,7 @@ body {
 
 html {
   background-color: var(--color-background);
-  background-image: url('/images/agate-texture-black 1.png');
+  background-image: url('/images/agate-texture-black.png');
   background-repeat: no-repeat;
   background-position: left top;
   background-size: auto 120vh;

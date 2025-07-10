@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// React components;
 import ChatSection from './components/ChatSection';
 import PortfolioSection from './components/PortfolioSection';
 import './App.css';
