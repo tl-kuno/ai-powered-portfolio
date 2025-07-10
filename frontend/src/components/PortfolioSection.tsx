@@ -160,10 +160,6 @@ const PortfolioSection = () => {
   return (
     <section className='portfolio-section'>
       <div className='portfolio-container'>
-        <div className='portfolio-header'>
-          <h2 style={{ visibility: 'hidden' }}>My Portfolio</h2>
-        </div>
-
         <div className='portfolio-content'>
           <div className='experience-section'>
             <h3 className='section-title'>Software Experience</h3>

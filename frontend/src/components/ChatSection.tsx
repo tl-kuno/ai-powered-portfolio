@@ -15,49 +15,37 @@ interface Message {
   timestamp: Date;
 }
 
+interface ChatSectionProps {
+  showPortfolio: boolean;
+  setShowPortfolio: (show: boolean) => void;
+}
+
 /**
  * Main chat section component with profile header and interactive chat interface.
- * Handles scroll-based animations and transitions to portfolio section.
+ * Handles click-based transitions to portfolio section.
  */
-const ChatSection = () => {
+const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hey this is Taylor! Welcome to my site :)\n\nAsk me anything about my work experience or personal projects. Or, if you would prefer, scroll down to see my portfolio.',
+      text: 'Hey this is Taylor! Welcome to my site :)\n\nAsk me anything about my work experience or personal projects. Or, if you would prefer, click below to explore my portfolio.',
       isUser: false,
       timestamp: new Date(),
     },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [streamingText, setStreamingText] = useState('');
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
 
-  useEffect(() => {
-    // Animation configuration
-    const HEADER_COLLAPSE_TRIGGER = 80;
-    const ANIMATION_MAX_SCROLL = 200;
+  const showPortfolioView = () => {
+    setShowPortfolio(true);
+  };
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      // Calculate progress for visual effects
-      const progress = Math.min(scrollY / ANIMATION_MAX_SCROLL, 1);
-      setScrollProgress(progress);
-
-      // Toggle header visibility
-      const shouldCollapse = scrollY >= HEADER_COLLAPSE_TRIGGER;
-      if (shouldCollapse !== isCollapsed) {
-        setIsCollapsed(shouldCollapse);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isCollapsed]);
+  const showChatView = () => {
+    setShowPortfolio(false);
+  };
 
   const sendMessageWithQuestion = async (question: string) => {
     const userMessage: Message = {
@@ -128,7 +116,7 @@ const ChatSection = () => {
     const handleQuestionClick = (event: CustomEvent) => {
       const question = event.detail.question;
       sendMessageWithQuestion(question);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showChatView();
     };
 
     window.addEventListener(
@@ -143,18 +131,6 @@ const ChatSection = () => {
       );
     };
   }, [messages]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToPortfolio = () => {
-    // Animation configuration
-    const PORTFOLIO_SCROLL_TARGET = 225;
-
-    // Scroll to position that puts Software Experience at top after animation
-    window.scrollTo({ top: PORTFOLIO_SCROLL_TARGET, behavior: 'smooth' });
-  };
 
   const scrollToBottom = () => {
     const chatMessages = document.querySelector('.chat-messages');
@@ -342,13 +318,6 @@ const ChatSection = () => {
     }
   };
 
-  const handleInputFocus = () => {
-    // Scroll back to chat when keyboard opens on iOS
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 300);
-  };
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -376,13 +345,14 @@ const ChatSection = () => {
   return (
     <>
       <section
-        className={`chat-section ${isCollapsed ? 'collapsed' : ''}`}
+        className={`chat-section ${showPortfolio ? 'collapsed' : ''}`}
         style={{
-          transform: `scale(${1 - scrollProgress * 0.3})`,
-          opacity: 1 - scrollProgress * 0.7,
+          transform: showPortfolio ? 'scale(0.7)' : 'scale(1)',
+          opacity: showPortfolio ? 0.3 : 1,
+          transition: 'transform 0.3s ease, opacity 0.3s ease',
         }}
       >
-        <div className={`chat-container ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className={`chat-container ${showPortfolio ? 'collapsed' : ''}`}>
           <div className='profile-section'>
             <div className='profile-header-inline'>
               <div className='headshot'>
@@ -445,7 +415,7 @@ const ChatSection = () => {
               </div>
             </div>
 
-            <div className={`chat-interface ${isCollapsed ? 'hidden' : ''}`}>
+            <div className={`chat-interface ${showPortfolio ? 'hidden' : ''}`}>
               <div className='chat-messages'>
                 {messages.map(message => {
                   const { content, buttons } = renderMessageWithLinks(
@@ -494,7 +464,6 @@ const ChatSection = () => {
                   value={inputValue}
                   onChange={e => setInputValue(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  onFocus={handleInputFocus}
                   placeholder='Ask about my experience, projects, or anything else...'
                 />
                 <button
@@ -528,15 +497,15 @@ const ChatSection = () => {
 
           <div className='scroll-hint'>
             <p>
-              <span onClick={scrollToPortfolio} className='scroll-text'>
-                ↓ Scroll down to explore my portfolio ↓
+              <span onClick={showPortfolioView} className='scroll-text'>
+                ↓ Click to explore my portfolio ↓
               </span>
             </p>
           </div>
         </div>
       </section>
 
-      {isCollapsed && (
+      {showPortfolio && (
         <div className='collapsed-header'>
           <div className='collapsed-content'>
             <div className='collapsed-left'>
@@ -582,7 +551,7 @@ const ChatSection = () => {
                 </a>
               </div>
             </div>
-            <button className='scroll-to-top' onClick={scrollToTop}>
+            <button className='scroll-to-top' onClick={showChatView}>
               <svg className='icon' viewBox='0 0 24 24' fill='currentColor'>
                 <path d='M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z' />
               </svg>
