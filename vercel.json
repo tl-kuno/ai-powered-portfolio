@@ -2,11 +2,6 @@
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "installCommand": "cd frontend && npm install",
-  "functions": {
-    "api/chat.py": {
-      "runtime": "python3.9"
-    }
-  },
 
   "routes": [
     {
