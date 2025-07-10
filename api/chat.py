@@ -1,3 +1,4 @@
+from http.server import BaseHTTPRequestHandler
 import json
 import os
 from typing import List
@@ -35,20 +36,15 @@ class ChatRequest(BaseModel):
     message: str
     history: List[Message] = []
 
-def handler(request):
-    if request.method == 'OPTIONS':
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
-            }
-        }
-    
-    try:
-        body = json.loads(request.body)
-        chat_request = ChatRequest(**body)
+class handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            body = json.loads(post_data.decode('utf-8'))
+            
+            chat_request = ChatRequest(**body)
             
             # Load portfolio data
             portfolio_data = load_portfolio_data()
@@ -94,6 +90,8 @@ BOUNDARY HANDLING:
 - Format redirect questions as: <question-buttons>[Specific work question?]|[Specific personal question?]</question-buttons>
 - Write redirect questions in second person ("you"/"your") tense with actual specific questions from the portfolio data
 - Always review conversation history to craft questions about topics not yet discussed
+- Example work questions: "What's it like building EMR software for EMTs at Sansio?", "How did your psychometrist experience at Essentia Health influence your programming?", "Tell me about the Apple Store UI overhaul project at Sansio", "How do you stay calm during crisis situations from your Woodland Hills experience?"
+- Example personal questions: "Tell me about your pets Mr. Al and Marni", "What's your songwriting process like?", "How do you make jewelry from Lake Superior agates?", "Tell me about leading the VertiGals climbing organization"
 
 SELF-AWARENESS:
 - When asked about this website/chatbot, explain it was built using AI-first development workflows with React frontend, Vercel serverless functions and OpenAI integration as a demonstration of rapid AI-assisted development
@@ -130,27 +128,33 @@ PORTFOLIO DATA:
                     temperature=0.6,
                 )
 
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
-            },
-            'body': json.dumps({"response": response.choices[0].message.content})
-        }
+            # Send response
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+            self.end_headers()
+            
+            response_data = {"response": response.choices[0].message.content}
+            self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
-    except Exception as e:
-        import traceback
-        print(f"Error: {str(e)}")
-        print(f"Traceback: {traceback.format_exc()}")
-        
-        return {
-            'statusCode': 500,
-            'headers': {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            'body': json.dumps({"error": f"Error processing request: {str(e)}"})
-        }
+        except Exception as e:
+            import traceback
+            print(f"Error: {str(e)}")
+            print(f"Traceback: {traceback.format_exc()}")
+            
+            self.send_response(500)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            
+            error_data = {"error": f"Error processing request: {str(e)}"}
+            self.wfile.write(json.dumps(error_data).encode('utf-8'))
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
