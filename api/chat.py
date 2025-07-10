@@ -52,6 +52,8 @@ class handler(BaseHTTPRequestHandler):
 
             # Load portfolio data
             portfolio_data = load_portfolio_data()
+            print(f"Portfolio data loaded: {bool(portfolio_data and portfolio_data != {'about_me': {'intro': 'Portfolio data not found'}})}")
+            print(f"Portfolio keys: {list(portfolio_data.keys()) if portfolio_data else 'None'}")
 
             # Initialize OpenAI client
             client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -77,7 +79,7 @@ class handler(BaseHTTPRequestHandler):
             response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=messages,
-                max_tokens=120,
+                max_tokens=200,
                 temperature=0.6,
             )
 
@@ -87,7 +89,7 @@ class handler(BaseHTTPRequestHandler):
                 response = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages,
-                    max_tokens=150,
+                    max_tokens=300,
                     temperature=0.6,
                 )
 
