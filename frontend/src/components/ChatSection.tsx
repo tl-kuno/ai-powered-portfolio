@@ -161,8 +161,8 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
     }, 20);
   };
 
-  const renderMessageWithLinks = (text: string) => {
-    // First handle question buttons
+  const renderMessageWithButtons = (text: string) => {
+    // Handle question buttons
     const questionButtonRegex =
       /<question-buttons>([^<]+)<\/question-buttons>/g;
     let processedText = text;
@@ -205,46 +205,9 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
       processedText = processedText.replace(questionMatch[0], '');
     }
 
-    // Then handle regular links
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-
-    while ((match = linkRegex.exec(processedText)) !== null) {
-      if (match.index > lastIndex) {
-        parts.push(processedText.slice(lastIndex, match.index));
-      }
-      // Create a single clickable element for the entire URL
-      const linkText = match[1];
-      const url = match[2];
-      parts.push(
-        <a
-          key={match.index}
-          href={url}
-          target='_blank'
-          rel='noopener noreferrer'
-          style={{
-            fontWeight: 'bold',
-            textDecoration: 'underline',
-            color: 'inherit',
-          }}
-        >
-          {linkText}
-        </a>
-      );
-      lastIndex = match.index + match[0].length;
-    }
-
-    if (lastIndex < processedText.length) {
-      parts.push(processedText.slice(lastIndex));
-    }
-
-    const textContent = parts.length > 1 ? parts : processedText;
-
-    // Return object with separate content and buttons
+    // Return object with content and buttons
     return {
-      content: textContent,
+      content: processedText,
       buttons: questionButtons,
     };
   };
@@ -418,7 +381,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
             <div className={`chat-interface ${showPortfolio ? 'hidden' : ''}`}>
               <div className='chat-messages'>
                 {messages.map(message => {
-                  const { content, buttons } = renderMessageWithLinks(
+                  const { content, buttons } = renderMessageWithButtons(
                     message.text
                   );
                   return (
@@ -451,7 +414,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
                 {streamingText && (
                   <div className='message ai'>
                     <div className='message-content'>
-                      {renderMessageWithLinks(streamingText).content}
+                      {renderMessageWithButtons(streamingText).content}
                       <span className='cursor'>|</span>
                     </div>
                   </div>
