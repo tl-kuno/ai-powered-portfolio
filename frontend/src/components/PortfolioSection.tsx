@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import ExperienceCard from './ExperienceCard';
 import './PortfolioSection.css';
 
@@ -96,7 +97,7 @@ const PERSONAL_PROJECTS = [
 const VOLUNTEER_EXPERIENCE = [
   {
     title: 'President',
-    subtitle: 'North Shore VertiGals • 2019-Present',
+    subtitle: 'North Shore VertiGals • 2022-Present (Board Member since 2019)',
     description:
       "Lead women's rock climbing community organization serving 70+ members. Rebuilt post-COVID engagement through strategic event scaling, launched successful film festival fundraiser, and created sustainable volunteer operations model.",
     questions: [
@@ -152,54 +153,99 @@ const EDUCATION = [
   },
 ];
 
+const SECTIONS = [
+  { title: 'Software Experience', data: SOFTWARE_EXPERIENCE },
+  { title: 'Healthcare Experience', data: HEALTHCARE_EXPERIENCE },
+  { title: 'Personal Projects', data: PERSONAL_PROJECTS },
+  { title: 'Volunteer Experience', data: VOLUNTEER_EXPERIENCE },
+  { title: 'Creative Projects', data: CREATIVE_PROJECTS },
+  { title: 'Education', data: EDUCATION },
+];
+
 /**
- * Portfolio section component displaying organized experience categories.
+ * Portfolio section component displaying organized experience categories in a carousel.
  * Contains software experience, healthcare background, projects, and education.
  */
 const PortfolioSection = () => {
+  const [currentSection, setCurrentSection] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const startX = useRef(0);
+  const isDragging = useRef(false);
+
+  const nextSection = () => {
+    setCurrentSection(prev => (prev + 1) % SECTIONS.length);
+  };
+
+  const prevSection = () => {
+    setCurrentSection(prev => (prev - 1 + SECTIONS.length) % SECTIONS.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].clientX;
+    isDragging.current = true;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isDragging.current) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX.current - endX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextSection();
+      } else {
+        prevSection();
+      }
+    }
+
+    isDragging.current = false;
+  };
+
   return (
     <section className='portfolio-section'>
       <div className='portfolio-container'>
-        <div className='portfolio-content'>
-          <div className='experience-section'>
-            <h3 className='section-title'>Software Experience</h3>
-            {SOFTWARE_EXPERIENCE.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
+        <div className='carousel-header'>
+          <div className='header-title-container'>
+            <div
+              className='header-title-track'
+              style={{ transform: `translateX(-${currentSection * 100}%)` }}
+            >
+              {SECTIONS.map((section, index) => (
+                <h3 key={index} className='header-title'>
+                  {section.title}
+                </h3>
+              ))}
+            </div>
           </div>
-
-          <div className='experience-section'>
-            <h3 className='section-title'>Healthcare Experience</h3>
-            {HEALTHCARE_EXPERIENCE.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
+          <div className='nav-controls'>
+            <button className='nav-arrow nav-arrow-left' onClick={prevSection}>
+              &lt;
+            </button>
+            <button className='nav-arrow nav-arrow-right' onClick={nextSection}>
+              &gt;
+            </button>
           </div>
+        </div>
 
-          <div className='experience-section'>
-            <h3 className='section-title'>Personal Projects</h3>
-            {PERSONAL_PROJECTS.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
-          </div>
-
-          <div className='experience-section'>
-            <h3 className='section-title'>Volunteer Experience</h3>
-            {VOLUNTEER_EXPERIENCE.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
-          </div>
-
-          <div className='experience-section'>
-            <h3 className='section-title'>Creative Projects</h3>
-            {CREATIVE_PROJECTS.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
-          </div>
-
-          <div className='experience-section'>
-            <h3 className='section-title'>Education</h3>
-            {EDUCATION.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
+        <div
+          className='carousel-container'
+          ref={carouselRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className='carousel-track'
+            style={{ transform: `translateX(-${currentSection * 100}%)` }}
+          >
+            {SECTIONS.map((section, index) => (
+              <div key={index} className='carousel-slide'>
+                <div className='experience-section'>
+                  {section.data.map((exp, expIndex) => (
+                    <ExperienceCard key={expIndex} {...exp} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

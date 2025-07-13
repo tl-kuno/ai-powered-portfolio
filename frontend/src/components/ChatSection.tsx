@@ -307,14 +307,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
 
   return (
     <>
-      <section
-        className={`chat-section ${showPortfolio ? 'collapsed' : ''}`}
-        style={{
-          transform: showPortfolio ? 'scale(0.7)' : 'scale(1)',
-          opacity: showPortfolio ? 0.3 : 1,
-          transition: 'transform 0.3s ease, opacity 0.3s ease',
-        }}
-      >
+      <section className={`chat-section ${showPortfolio ? 'collapsed' : ''}`}>
         <div className={`chat-container ${showPortfolio ? 'collapsed' : ''}`}>
           <div className='profile-section'>
             <div className='profile-header-inline'>

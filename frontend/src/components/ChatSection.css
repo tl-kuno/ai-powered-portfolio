@@ -11,7 +11,9 @@
   width: 100%;
   background: var(--color-surface);
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(46, 41, 48, 0.15);
+  box-shadow:
+    0 20px 40px rgba(46, 41, 48, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   height: 70vh;
   display: flex;
@@ -217,6 +219,7 @@
 .scroll-hint {
   text-align: center;
   padding: 0.5rem;
+  margin-bottom: 1rem;
   color: var(--color-text-muted);
   font-size: 0.9rem;
   animation: bounce 2s infinite;
