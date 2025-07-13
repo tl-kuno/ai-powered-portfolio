@@ -43,16 +43,16 @@
 
 .link-dropdown {
   position: absolute;
-  bottom: 100%;
+  top: 100%;
   left: 100%;
-  background: var(--color-surface);
+  background: rgba(46, 41, 48, 0.95);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(46, 41, 48, 0.2);
   padding: 0.5rem;
   min-width: 200px;
   z-index: 10;
-  margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
 }
 
 .dropdown-link {
