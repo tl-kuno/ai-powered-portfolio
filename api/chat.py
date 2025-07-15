@@ -9,25 +9,12 @@ from pydantic import BaseModel
 
 # Load portfolio data
 def load_portfolio_data():
-    import os
-    # Try different possible paths
-    possible_paths = [
-        "data/portfolio.json",
-        "../data/portfolio.json",
-        "../../data/portfolio.json",
-        "/var/task/data/portfolio.json"
-    ]
-
-    for path in possible_paths:
-        try:
-            if os.path.exists(path):
-                with open(path, "r") as f:
-                    return json.load(f)
-        except BaseException:
-            continue
-
-    # Fallback - return minimal data
-    return {"about_me": {"intro": "Portfolio data not found"}}
+    try:
+        with open("data/portfolio.json", "r") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading portfolio data: {e}")
+        return {"about_me": {"intro": "Portfolio data not found"}}
 
 
 class Message(BaseModel):
