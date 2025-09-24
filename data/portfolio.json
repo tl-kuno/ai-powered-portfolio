@@ -14,14 +14,16 @@
       "duration": "September 2022 - Present (started as intern, full-time since January 2023)",
       "what_i_do": "Build electronic medical record software specifically for EMTs, firefighters, and police officers who need to document in high-stress, pre-hospital situations",
       "technologies": [
-        "React",
+        "React (component composition, hooks, state management)",
         "JavaScript",
         "TypeScript",
         "Next.js",
         "Java",
         "CSS",
-        "Emotion library"
+        "Emotion library",
+        "Jest"
       ],
+      "technical_strengths": "I love React's component reusability - being able to break UI into organized, consistent pieces that maintain cohesive functionality throughout the app.",
       "collaboration_story": "I work closely with product team members who are former EMTs - they help me understand the real-world constraints and keep me from over-engineering solutions. Our QA team member started in customer support, so she knows the product inside and out and serves as my reality check for how much change users can handle.",
       "major_projects": [
         {
@@ -61,6 +63,10 @@
       "duration": "March 2018 - September 2022 (4 years, 7 months)",
       "department": "Neuropsychology",
       "what_i_did": "Administered neuropsychological testing to patients ages 1 to adult, built rapport quickly to ensure valid test results, and provided detailed documentation for neuropsychologists",
+      "populations_served": "Worked with children across the full spectrum of learning differences including ADHD, autism, dyslexia, and other neurological conditions - essentially any child who needed neuropsychological evaluation",
+      "specialization": "Primary focus was autism spectrum disorder (ASD) evaluations",
+      "adaptive_strategies": "When standard approaches weren't working, I'd adapt my methods to meet each child where they were. Once I reengaged a patient by delivering instructions in a dinosaur voice through his favorite toy that he brought along - it helped him show his actual academic skills rather than just his distress limits.",
+      "documentation_balance": "Always documented any departures from standardization so neuropsychologists had complete qualitative context, ensuring we captured authentic capabilities rather than just stress responses",
       "key_skills_developed": "Building trust rapidly under pressure, maintaining standardized procedures while adapting to individual needs, multi-tasking documentation while staying focused on the person in front of me",
       "documentation_challenges": "Had to maintain perfect standardization while keeping each child calm and motivated. Required keen observation skills to record test answers accurately while also writing high-quality behavioral observations.",
       "personal_systems": "I developed shorthand methods for tracking documentation on the fly and learned to systemize my process to record things accurately while staying attentive to the patient's experience",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './ChatSection.css';
 
 /**
@@ -35,6 +35,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState('');
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -43,74 +44,115 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
     setShowPortfolio(true);
   };
 
-  const showChatView = () => {
+  const showChatView = useCallback(() => {
     setShowPortfolio(false);
-  };
+  }, [setShowPortfolio]);
 
-  const sendMessageWithQuestion = async (question: string) => {
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      text: question,
-      isUser: true,
-      timestamp: new Date(),
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-
-    // Add to command history (keep last 5)
-    setCommandHistory(prev => {
-      const newHistory = [question, ...prev].slice(0, 5);
-      return newHistory;
-    });
-
-    setIsLoading(true);
-    setTimeout(scrollToBottom, 100);
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: question,
-          history: messages.slice(1).map(msg => ({
-            role: msg.isUser ? 'user' : 'assistant',
-            content: msg.text,
-          })),
-        }),
-      });
-
-      const data = await response.json();
-      setIsLoading(false);
-
-      // Stream the AI response
-      streamText(data.response, fullText => {
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: fullText,
-          isUser: false,
-          timestamp: new Date(),
-        };
-        setMessages(prev => [...prev, aiMessage]);
-        setTimeout(scrollToBottom, 100);
-      });
-    } catch {
-      const createErrorMessage = (text: string): Message => ({
-        id: (Date.now() + 1).toString(),
-        text,
-        isUser: false,
-        timestamp: new Date(),
-      });
-
-      setMessages(prev => [
-        ...prev,
-        createErrorMessage('Sorry, I encountered an error. Please try again.'),
-      ]);
-    } finally {
-      setIsLoading(false);
+  const scrollToBottom = () => {
+    const chatMessages = document.querySelector('.chat-messages');
+    if (chatMessages) {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
   };
+
+  const streamText = useCallback(
+    (text: string, callback: (fullText: string) => void) => {
+      // Remove question-buttons tags from streaming display
+      const cleanText = text.replace(
+        /<question-buttons>([^<]+)<\/question-buttons>/g,
+        ''
+      );
+
+      setStreamingText('');
+      setIsStreaming(true);
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < cleanText.length) {
+          setStreamingText(cleanText.slice(0, index + 1));
+          index++;
+          scrollToBottom();
+        } else {
+          clearInterval(interval);
+          callback(text); // Still pass full text to callback for final rendering
+          setStreamingText('');
+          setIsStreaming(false);
+        }
+      }, 20);
+    },
+    []
+  );
+
+  const sendMessageWithQuestion = useCallback(
+    async (question: string) => {
+      if (isLoading || isStreaming) return;
+
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: question,
+        isUser: true,
+        timestamp: new Date(),
+      };
+
+      setMessages(prev => [...prev, userMessage]);
+
+      // Add to command history (keep last 5)
+      setCommandHistory(prev => {
+        const newHistory = [question, ...prev].slice(0, 5);
+        return newHistory;
+      });
+
+      setIsLoading(true);
+      setTimeout(scrollToBottom, 100);
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: question,
+            history: messages.slice(1).map(msg => ({
+              role: msg.isUser ? 'user' : 'assistant',
+              content: msg.text,
+            })),
+          }),
+        });
+
+        const data = await response.json();
+        setIsLoading(false);
+
+        // Stream the AI response
+        streamText(data.response, fullText => {
+          const aiMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            text: fullText,
+            isUser: false,
+            timestamp: new Date(),
+          };
+          setMessages(prev => [...prev, aiMessage]);
+          setTimeout(scrollToBottom, 100);
+        });
+      } catch {
+        const createErrorMessage = (text: string): Message => ({
+          id: (Date.now() + 1).toString(),
+          text,
+          isUser: false,
+          timestamp: new Date(),
+        });
+
+        setMessages(prev => [
+          ...prev,
+          createErrorMessage(
+            'Sorry, I encountered an error. Please try again.'
+          ),
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [isLoading, isStreaming, messages, streamText]
+  );
 
   useEffect(() => {
     const handleQuestionClick = (event: CustomEvent) => {
@@ -130,36 +172,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
         handleQuestionClick as EventListener
       );
     };
-  }, [messages]);
-
-  const scrollToBottom = () => {
-    const chatMessages = document.querySelector('.chat-messages');
-    if (chatMessages) {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-  };
-
-  const streamText = (text: string, callback: (fullText: string) => void) => {
-    // Remove question-buttons tags from streaming display
-    const cleanText = text.replace(
-      /<question-buttons>([^<]+)<\/question-buttons>/g,
-      ''
-    );
-
-    setStreamingText('');
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < cleanText.length) {
-        setStreamingText(cleanText.slice(0, index + 1));
-        index++;
-        scrollToBottom();
-      } else {
-        clearInterval(interval);
-        callback(text); // Still pass full text to callback for final rendering
-        setStreamingText('');
-      }
-    }, 20);
-  };
+  }, [messages, sendMessageWithQuestion, showChatView]);
 
   const renderMessageWithButtons = (text: string) => {
     // Handle question buttons
@@ -178,7 +191,9 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
         <button
           key={`${questionMatch!.index}-${index}`}
           className='question-button'
+          disabled={isLoading || isStreaming}
           onClick={() => {
+            if (isLoading || isStreaming) return;
             const event = new CustomEvent('questionClick', {
               detail: { question },
             });
@@ -213,7 +228,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   };
 
   const sendMessage = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || isLoading || isStreaming) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -284,7 +299,9 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      sendMessage();
+      if (!isLoading && !isStreaming) {
+        sendMessage();
+      }
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (commandHistory.length > 0) {
@@ -424,7 +441,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
                 />
                 <button
                   onClick={sendMessage}
-                  disabled={!inputValue.trim() || isLoading}
+                  disabled={!inputValue.trim() || isLoading || isStreaming}
                 >
                   <svg
                     width='20'
