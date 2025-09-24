@@ -107,7 +107,55 @@ Response:
 Required in Vercel dashboard:
 - `OPENAI_API_KEY` - Your OpenAI API key
 
-## 🧪 API Testing
+## 🧪 Testing
+
+### Frontend Tests (Vitest + React Testing Library)
+
+```bash
+# Run all frontend tests
+cd frontend
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run specific test file
+npx vitest run src/tests/ChatInput.test.tsx
+
+# Run with coverage
+npm run test:coverage
+```
+
+### Python API Tests (pytest)
+
+```bash
+# Activate virtual environment and run API tests
+source venv/bin/activate
+python -m pytest api/test_chat.py -v
+
+# Run with coverage
+python -m pytest api/test_chat.py --cov=api --cov-report=html
+```
+
+### Test Suites
+
+**Frontend Tests:**
+1. **App Rendering** - Verifies main app component renders correctly with profile and chat sections
+2. **Chat Input** - Tests input field functionality, typing, value updates, and clearing after message send
+3. **Message Sending** - Tests message submission, API integration, user/AI message display, and loading states
+4. **Navigation Between Views** - Tests switching between chat and portfolio sections, scroll behavior
+
+**Python API Tests:**
+1. **Portfolio Data Loading** - Tests successful data loading and fallback behavior for missing files
+2. **Pydantic Model Validation** - Validates request/response data structures and type checking
+3. **HTTP Handler - Success Flow** - Tests successful POST requests and JSON response handling
+4. **HTTP Handler - Token Limits** - Tests retry logic when OpenAI token limits are exceeded
+5. **HTTP Handler - Error Handling** - Tests 500 error responses for various failure scenarios
+6. **HTTP Handler - CORS** - Tests OPTIONS requests and proper CORS header configuration
+7. **System Prompt Templates** - Tests dynamic prompt generation with portfolio data substitution
+8. **Conversation History** - Tests multi-turn conversation handling and message history management
+
+### API Testing
 
 ```bash
 # Test chat endpoint
