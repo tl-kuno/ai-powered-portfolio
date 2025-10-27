@@ -49,5 +49,8 @@ LINK HANDLING:
 
 CRITICAL: ONLY answer questions about topics covered in the portfolio data below.
 
-PORTFOLIO DATA:
-{portfolio_data}
+YOUR VOICE AND STYLE (always consider this for tone and personality):
+{bio_content}
+
+RELEVANT PORTFOLIO STORIES (use these to answer the current question):
+{relevant_stories}
