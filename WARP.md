@@ -50,7 +50,19 @@ curl http://localhost:3000/api/chat \
 npm i -g vercel
 vercel --prod        # Deploy to production
 
-# Set OPENAI_API_KEY in Vercel dashboard
+# Set environment variables in Vercel dashboard:
+# - OPENAI_API_KEY
+# - PINECONE_API_KEY
+# - PINECONE_INDEX_NAME (optional, defaults to "portfolio-embeddings")
+```
+
+### Embeddings Management
+```bash
+# Upload portfolio chunks to Pinecone (run after portfolio.json changes)
+export $(cat .env | xargs) && python3 scripts/upload_embeddings.py
+
+# Test retrieval with sample queries
+export $(cat .env | xargs) && python3 scripts/test_retrieval.py
 ```
 
 ### Running Single Tests
@@ -68,16 +80,35 @@ python -m pytest api/test_chat.py::test_function_name -v
 - **Frontend**: React 18 + TypeScript + Vite
 - **Backend**: Python serverless functions on Vercel (not Express/Node)
 - **AI Integration**: OpenAI GPT-4o-mini with streaming responses
+- **Vector Database**: Pinecone for semantic search over portfolio content
+- **Embeddings**: OpenAI text-embedding-3-small (512 dimensions)
 - **Styling**: Vanilla CSS3 with custom properties (no CSS frameworks)
 - **Testing**: Vitest + React Testing Library (frontend), pytest (backend)
 
 ### Key Architectural Patterns
 
-#### AI Chat System
-The AI assistant responds **in first person as Taylor Kuno** using portfolio data from `data/portfolio.json`. The system prompt (`api/system_prompt.txt`) injects this data and enforces conversational boundaries:
+#### AI Chat System with Vector Retrieval
+The AI assistant responds **in first person as Taylor Kuno** using vector embeddings stored in Pinecone:
+
+**Data Flow:**
+1. Portfolio content is chunked and embedded via `scripts/upload_embeddings.py`
+2. User query is embedded using OpenAI's text-embedding-3-small
+3. Pinecone retrieves the bio chunk (always) + top 3 relevant chunks
+4. System prompt (`api/system_prompt.txt`) receives bio for voice consistency + relevant stories
+5. Chat history is limited to last 6 messages to control token usage
+
+**Chunking Strategy:**
+- Bio/intro combined into single voice anchor chunk
+- Work projects kept as complete stories with all context
+- Healthcare roles preserved with full narratives
+- Personal content grouped logically (pets, creative pursuits, etc.)
+- Each chunk maintains Taylor's conversational writing style
+
+**Response Guidelines:**
 - Answers questions only about topics in the portfolio data
 - Provides contextual follow-up question suggestions using `<question-buttons>` XML tags
 - Uses streaming responses with typing effect on frontend
+- Debug mode includes chunk IDs, types, and similarity scores
 
 #### Component Communication via Custom Events
 Components communicate through `window.dispatchEvent()` custom events rather than prop drilling:
@@ -99,7 +130,10 @@ history: messages.slice(1).map(msg => ({
   content: msg.text
 }))
 ```
-Note: `.slice(1)` skips the initial greeting message to reduce token usage.
+Notes:
+- `.slice(1)` skips the initial greeting message to reduce token usage
+- Backend limits history to last 6 messages to control context window size
+- Bio chunk is always included to maintain voice consistency across conversation
 
 ### File Structure Highlights
 
@@ -111,10 +145,14 @@ Note: `.slice(1)` skips the initial greeting message to reduce token usage.
 - `tests/` - Test files using Vitest + React Testing Library
 
 #### Backend (`api/`)
-- `chat.py` - Vercel serverless function handler (HTTP request handler, not Flask/Express)
-- `system_prompt.txt` - AI system prompt template with `{portfolio_data}` placeholder
-- `requirements.txt` - Python dependencies (openai, pydantic, httpx)
+- `chat.py` - Vercel serverless function handler with Pinecone vector retrieval
+- `system_prompt.txt` - AI system prompt template with `{bio_content}` and `{relevant_stories}` placeholders
+- `requirements.txt` - Python dependencies (openai, pinecone, pydantic, httpx)
 - `test_chat.py` - pytest test suite
+
+#### Scripts (`scripts/`)
+- `upload_embeddings.py` - Chunks portfolio.json and uploads embeddings to Pinecone
+- `test_retrieval.py` - Tests vector retrieval with sample queries
 
 #### Configuration
 - `data/portfolio.json` - Single source of truth for all portfolio content (AI context + display data)
@@ -127,9 +165,12 @@ Note: `.slice(1)` skips the initial greeting message to reduce token usage.
 #### Serverless Function Structure
 `api/chat.py` uses Vercel's Python runtime with `BaseHTTPRequestHandler`:
 - Methods: `do_POST()` for chat requests, `do_OPTIONS()` for CORS preflight
-- Loads `data/portfolio.json` on each request (serverless context)
-- Formats system prompt by injecting portfolio data into template
+- Embeds user query using OpenAI text-embedding-3-small (512 dimensions)
+- Queries Pinecone for bio chunk (always) + top 3 relevant chunks using cosine similarity
+- Formats system prompt with bio (voice anchor) and relevant stories
+- Limits chat history to last 6 messages
 - Implements token limit retry logic (200 → 300 tokens if cut off)
+- Returns debug info with chunk IDs, types, and similarity scores
 
 #### Streaming Response Pattern
 Frontend simulates streaming with character-by-character display:
@@ -155,17 +196,22 @@ Mobile-first design with breakpoint at 768px:
 ## Critical Constraints
 
 ### Do Not Alter Without Explicit Permission
-- `data/portfolio.json` structure - This is the source of truth for Taylor's professional and personal information and serves as writing samples so that the chat agent can respond in her tone. 
+- `data/portfolio.json` structure - This is the source of truth for Taylor's professional and personal information and serves as writing samples so that the chat agent can respond in her tone.
+- Embedding dimensions (512) - Changing requires recreating Pinecone index and re-uploading all chunks
 
-### Do Not Mofify Without Care
+### Do Not Modify Without Care
 - `<question-buttons>` XML format - Changing this requires coordinated updates to system prompt, frontend parsing, and test cases
 - Command history limit (5 items) - Intentional constraint to prevent state bloat
+- Chat history limit (6 messages) - Backend constraint to control context window
 - Token limits (200/300) - Tuned for response quality vs. cost tradeoff
+- Chunk retrieval count (1 bio + 3 relevant) - Balances context quality with token usage
+- Chunking strategy in `upload_embeddings.py` - Preserves Taylor's conversational voice
 
 ### Security Notes
 - NEVER use `dangerouslySetInnerHTML` for rendering AI responses
-- NEVER commit `OPENAI_API_KEY` - must be set in Vercel dashboard only
+- NEVER commit API keys (`OPENAI_API_KEY`, `PINECONE_API_KEY`) - must be set in Vercel dashboard and `.env` for local dev
 - CORS headers are open (`*`) since this is a public portfolio site
+- Pinecone index uses serverless (free tier compatible) with cosine metric
 
 ### Testing Philosophy
 Tests focus on user interactions rather than implementation details:
