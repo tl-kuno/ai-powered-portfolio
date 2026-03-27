@@ -39,7 +39,10 @@ class handler(BaseHTTPRequestHandler):
 
             # Load portfolio data
             portfolio_data = load_portfolio_data()
-            print(f"Portfolio data loaded: {bool(portfolio_data and portfolio_data != {'about_me': {'intro': 'Portfolio data not found'}})}")
+            has_real_data = bool(
+                portfolio_data and portfolio_data != {'about_me': {'intro': 'Portfolio data not found'}}
+            )
+            print(f"Portfolio data loaded: {has_real_data}")
             print(f"Portfolio keys: {list(portfolio_data.keys()) if portfolio_data else 'None'}")
 
             # Initialize OpenAI client

@@ -242,3 +242,4 @@ Thumbs.db
 # Design files (keep in repo but could ignore if too large)
 # design-screenshots/
 .vercel/
+.DS_Store

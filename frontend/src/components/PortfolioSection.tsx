@@ -8,11 +8,11 @@ const SOFTWARE_EXPERIENCE = [
     title: 'Software Developer - MobileTouch Team',
     subtitle: 'Sansio • 2023-Present',
     description:
-      'Build electronic medical record software for EMTs and first responders using React, TypeScript, and Next.js. Led special project implementing new styling system to meet Apple Store submission standards. Currently help to spearhead company-wide AI tool adoption initiative across development teams.',
+      'Build electronic medical record software for EMTs and first responders using React, TypeScript, and Next.js. Led development of NERIS — a new hybrid React/native iOS & Android application for firefighter incident reporting, built as an integrated expansion of the product line through agentic coding workflows with 98%+ of code AI-generated, co-pioneered with teammate Melissa. Created the !flag system: a keyboard-driven command vocabulary embedded in custom AI instructions to steer agents mid-conversation — shared at "Up A Crick," a cross-company AI adoption talk for 242 attendees, described as "one of the very few useful AI presentations."',
     questions: [
-      'What is it like building EMR software for EMTs?',
-      'How are you helping lead AI tool adoption at Sansio?',
-      'Tell me about the Apple Store UI overhaul project.',
+      'Tell me about the NERIS firefighter app and what building it through agentic coding was like',
+      'What is the !flag system and how did it come about?',
+      'What was your "Up A Crick" talk about, and how did 242 people respond to it?',
     ],
   },
   {
@@ -62,6 +62,17 @@ const HEALTHCARE_EXPERIENCE = [
 
 const PERSONAL_PROJECTS = [
   {
+    title: 'Enigma AI',
+    subtitle: 'Personal Project • 2025-2026',
+    description:
+      'An interactive AI personality assessment that generates creature-based identity readings powered by Claude Sonnet and DALL-E. Combines explicit responses with behavioral interaction signals to analyze thinking style and working patterns. Built with React 19 and Vercel edge functions. There is a twist users discover for themselves.',
+    questions: [
+      'What inspired the design of Enigma AI?',
+      'What did you learn about behavioral signals from building Enigma AI?',
+    ],
+    link: 'https://enigma-ai-blush.vercel.app/',
+  },
+  {
     title: 'AI-Powered Portfolio Assistant',
     subtitle: 'Personal Project • 2025',
     description:
@@ -96,13 +107,13 @@ const PERSONAL_PROJECTS = [
 
 const VOLUNTEER_EXPERIENCE = [
   {
-    title: 'President',
-    subtitle: 'North Shore VertiGals • 2022-Present (Board Member since 2019)',
+    title: 'Former President / Advisor',
+    subtitle: 'North Shore VertiGals • 2019-2025',
     description:
-      "Lead women's rock climbing community organization serving 70+ members. Rebuilt post-COVID engagement through strategic event scaling, launched successful film festival fundraiser, and created sustainable volunteer operations model.",
+      "Led women's rock climbing community organization as President for 3+ years. Successfully handed off leadership at the end of 2025 — rebuilt post-COVID engagement, launched the Nuts of Steel film festival fundraiser (70+ attendees), and created a sustainable volunteer operations model. Now serve as advisor and website maintainer.",
     questions: [
-      'How did you rebuild VertiGals engagement after COVID?',
-      'Tell me about the Nuts of Steel film festival for VertiGals',
+      'What does successfully handing off VertiGals leadership mean to you?',
+      'How did you build a sustainable operations model for VertiGals?',
     ],
   },
 ];
@@ -112,10 +123,10 @@ const CREATIVE_PROJECTS = [
     title: 'Creative Pursuits & Artistic Expression',
     subtitle: 'Ongoing Personal Practice • Various Projects',
     description:
-      'Diverse creative portfolio including 72-page zine design for independent skate film, graphic design for VertiGals merchandise line, original music composition spanning folk to metal genres, poetry from stream-of-consciousness writing, and jewelry making from Lake Superior agates. These creative practices inform my approach to UI/UX design and problem-solving.',
+      'Diverse creative portfolio including 72-page zine design for independent skate film, graphic design for VertiGals merchandise line, original music composition spanning folk to metal genres (including playing live), poetry from stream-of-consciousness writing, and jewelry making from Lake Superior agates. These creative practices inform my approach to UI/UX design and problem-solving.',
     questions: [
       'Tell me about designing the 72-page Dogshit Zine for the skate film',
-      'What is your songwriting and music collaboration process like?',
+      'Tell me about playing music live and what collaboration looks like for you',
     ],
     links: [
       {
