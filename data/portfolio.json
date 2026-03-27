@@ -36,10 +36,63 @@
         },
         {
           "name": "AI Tools Leadership Initiative",
-          "story": "I've been helping lead our company's adoption of AI development tools. I test everything from GitHub Copilot to Cursor to Amazon Q, then develop strategies to help our team integrate these tools effectively.",
-          "approach": "We focus on building a culture of experimentation rather than instruction. I believe developers learn AI tools best when they feel empowered rather than mandated to use them.",
-          "current_focus": "Using AI to improve our code documentation and testing suite, plus running hackathons on low-priority features to practice with new tools in low-pressure situations",
+          "story": "I've been helping lead our company's adoption of AI development tools. I test everything from GitHub Copilot to Cursor to Amazon Q to Claude Code to Kiro, then develop strategies to help our team integrate these tools effectively.",
+          "approach": "We focus on building a culture of experimentation rather than instruction. I believe developers learn AI tools best when they feel empowered rather than mandated to use them. I created the !flag system — a prompt-flag vocabulary embedded in custom AI instructions — as a concrete artifact to share with the team, letting anyone switch agent behavior mid-conversation via keyboard commands like !plan, !deepdive, or !yolo without re-explaining preferences.",
+          "current_focus": "Using AI to improve our code documentation and testing suite, plus running hackathons on low-priority features to practice with new tools in low-pressure situations. Tools currently in regular use or evaluation: GitHub Copilot, Cursor, Amazon Q, Claude Code, Kiro, Warp, GitHub Copilot CLI, ChatGPT, Claude, NotebookLM.",
           "recognition": "My AI integration ideas have been selected for grant applications and received positive feedback from company leadership"
+        },
+        {
+          "name": "NERIS Firefighter Reporting Application",
+          "story": "Led development of NERIS — a new hybrid web and native iOS/Android application built as an integrated expansion of our core EMT product line, designed for agencies that handle both firefighter and EMS incidents. Built alongside teammate Melissa using agentic coding workflows, with 98%+ of the code AI-generated. The demo is in production and the full application is nearing completion.",
+          "approach": "Led with agentic coding from day one — using AI not just as a tool but as the primary author of implementation, with us guiding scope, reviewing output, and making architectural decisions. This became a model for how we think about AI-assisted development at Sansio.",
+          "tech": "React, TypeScript, native iOS and Android integration",
+          "collaboration": "Co-built with teammate Melissa. Together we pioneered what agentic coding standards look like in practice at Sansio.",
+          "impact": "Extends the product line to serve dual-agency first responders and positions Sansio for NERIS government reporting compliance."
+        },
+        {
+          "name": "Up A Crick — Cross-Company AI Adoption Talk",
+          "story": "Gave a talk called 'Up A Crick' to 242 cross-company attendees covering AI adoption from both technical and change management angles. Distributed hands-on resources including AI tool recommendations, a model comparison experiment, and the !flag system — a prompt-flag vocabulary I created for steering AI agents via keyboard commands embedded in custom instructions.",
+          "reception": "Described as 'one of the very few useful AI presentations' and 'very balanced and practical — able to convey important messages.' The talk emphasized practical experimentation over hype and accessible framing for non-technical stakeholders.",
+          "resources_distributed": ["AI-Resources.md (tool recommendations)", "PromptFlagConcept.yml (!flag vocabulary)", "Opus vs. GPT model reasoning experiment"],
+          "flag_system": "The !flag system uses short keyboard triggers (like !plan, !deepdive, !yolo) embedded in custom AI instructions to change agent behavior mid-conversation without leaving the keyboard or explaining preferences from scratch."
+        }
+        ,
+        {
+          "name": "Styling System & Component Library (Emotion)",
+          "story": "Led a migration to a consistent styling system using Emotion and built a reusable component library from scratch to improve consistency and speed of UI development.",
+          "approach": "Designed tokens, a theme system, and standardized components; created documentation, storybook examples, and migration guidance for the team.",
+          "scope": "Rewrote CSS and component styles across the MobileTouch web codebase and built a shared component library used across features.",
+          "impact": "Resolved accessibility and consistency issues, reduced styling-related bugs, and sped up new UI work while improving cross-platform parity.",
+          "technologies": ["React", "Emotion", "TypeScript", "Storybook", "Jest"],
+          "what_i_learned": "How to design a scalable design system and coordinate a large migration with cross-team buy-in and minimal regressions."
+        },
+        {
+          "name": "Date Library Migration (moment -> date-fns)",
+          "story": "Removed Moment.js in favor of date-fns to reduce bundle size and provide immutable, functional date utilities across the codebase.",
+          "approach": "Implemented a centralized `dateUtils` module, refactored code to use consistent parsing/formatting helpers, and added tests to prevent regressions.",
+          "impact": "Reduced bundle size and improved consistency around timezone/formatting edge cases across the app.",
+          "technologies": ["TypeScript", "date-fns", "Jest"]
+        },
+        {
+          "name": "ECG API",
+          "story": "Designed and implemented an API to ingest, validate, and serve ECG waveform data so clinicians can view waveforms in the MobileTouch experience.",
+          "approach": "Defined data contracts, implemented backend endpoints with validation and storage, and built frontend visualizations for waveform review.",
+          "impact": "Enabled in-app waveform review that improved clinicians' ability to make time-sensitive decisions.",
+          "technologies": ["Java", "Python", "REST", "Postgres", "React"]
+        },
+        {
+          "name": "Third-Party Data Import Tracking",
+          "story": "Designed and implemented a system to track imports from third-party data sources, providing auditing, deduplication, and failure visibility for support teams.",
+          "approach": "Built a backend import-tracking service that records import lifecycle, statuses, errors, and provides an admin UI to monitor and resolve issues.",
+          "impact": "Reduced data errors and significantly cut time-to-resolution for import failures.",
+          "technologies": ["Java", "Postgres", "React"]
+        },
+        {
+          "name": "Monitoring Dashboard (frontend + backend) with WebSockets",
+          "story": "Built a real-time monitoring dashboard for system health and ingestion pipelines using WebSockets for low-latency updates.",
+          "approach": "Implemented backend WebSocket endpoints broadcasting metrics and events, and built a frontend dashboard with charts, filters, and realtime alerts.",
+          "impact": "Provided operations and support teams instant visibility into system state and reduced time-to-detect and respond to incidents.",
+          "technologies": ["Node.js", "WebSockets", "React", "Charting Libraries"]
         }
       ],
       "growth_story": "Started as an intern with no formal JavaScript or React training - I taught myself these technologies because I could see they'd be important. Now I'm mentoring our new intern and leading major technical initiatives.",
@@ -97,8 +150,9 @@
   "volunteer_leadership": {
     "north_shore_vertigals": {
       "organization": "North Shore VertiGals",
-      "role": "President (Board Member since 2019)",
-      "duration": "January 2022 - Present (3rd year as President, board member since 2019)",
+      "role": "Former President / Current Advisor",
+      "duration": "Board Member 2019-2025, President January 2022 - December 2025",
+      "transition": "Successfully handed off the presidency at the end of 2025. Now provides advisory support as needed and maintains the organization's website.",
       "mission": "Creating opportunities for women-identifying and non-binary community members to begin or advance their rock climbing skills",
       "leadership_approach": "When I became president, our post-COVID engagement was low and board members were burned out. I emphasized scaling back events to find a sustainable rhythm that drove better engagement while being feasible for volunteers to run",
       "major_initiatives": [
@@ -172,6 +226,20 @@
       "linkAvailableInPortfolio": "true",
       "current_status": "Live and actively maintained for the organization"
     },
+    "enigma_ai": {
+      "name": "Enigma AI",
+      "url": "https://enigma-ai-blush.vercel.app/",
+      "github": "https://github.com/tl-kuno/enigma-ai",
+      "description": "Interactive AI personality assessment combining explicit user responses with behavioral interaction signals (keystroke timing, hesitations, drag patterns) to generate creature-based identity readings. Users discover the behavioral dimension themselves.",
+      "timeline": "2025-2026",
+      "technologies": ["React 19", "Vite", "Claude Sonnet (Anthropic)", "DALL-E 3 (OpenAI)", "Vercel Edge Functions"],
+      "highlights": [
+        "Dual-API integration: Anthropic for personality analysis, OpenAI for image generation",
+        "Behavioral audit trail: captures interaction signals as an additional layer of personality input",
+        "Parallel generation: Claude text and DALL-E artwork generate simultaneously",
+        "Security: API keys proxied through Vercel edge functions, never exposed client-side"
+      ]
+    },
     "picnic_quest_game": {
       "name": "Picnic Quest",
       "description": "Text-based adventure game where Junimo the cat and Marni the dog (based of my dog and my teammates cat) collect items around the home to attend a neighborhood picnic in the park",
@@ -203,18 +271,22 @@
         "Amazon Q",
         "ChatGPT",
         "Claude",
-        "Notebook LM"
+        "Claude Code",
+        "NotebookLM",
+        "Kiro",
+        "Warp",
+        "GitHub Copilot CLI"
       ],
       "learning_queue": [
         "Advanced AI/ML integration",
-        "System design",
-        "Agentic coding workflows"
+        "System design"
       ],
       "expertise_areas": [
         "Frontend development",
         "UX design",
         "API integration",
         "AI tool adoption",
+        "Agentic coding workflows",
         "Team mentoring"
       ],
       "languages_i_dislike": "I learned C in school and hated it. I also strongly dislike dealing with SQL and other database languages, although I'll use them as needed!",
@@ -224,7 +296,7 @@
       "music": {
         "story": "Started playing guitar as a teenager, took a break during my 20s, now back with renewed passion for writing my own music",
         "styles": ["Alternative", "Shoegaze", "Metal"],
-        "collaboration": "Love playing music with my husband and close friends, hope to collaborate on a live project someday"
+        "collaboration": "Love playing music with my husband and close friends — have played live and hope to keep collaborating on different kinds of projects"
       },
       "writing": {
         "approach": "I start with journaling-style stream of consciousness, then distill that down to poetry",
@@ -302,7 +374,10 @@
       "React and frontend development",
       "UI/UX design for high-stress users",
       "Mentoring and team leadership",
-      "Career transitions from healthcare to tech"
+      "Career transitions from healthcare to tech",
+      "NERIS firefighter app and agentic coding workflows",
+      "Up A Crick talk and AI change management",
+      "The !flag system for steering AI agents"
     ],
     "personal_topics": [
       "Rock climbing and community building",
@@ -313,11 +388,12 @@
       "Norwegian heritage and Viking history",
       "Duluth, Minnesota and the North Shore",
       "Cooking and Mexican food",
-      "Having an identical twin in tech"
+      "Having an identical twin in tech",
+      "Enigma AI personality assessment project",
+      "Playing live music and collaborating creatively"
     ],
     "learning_topics": [
       "AI and machine learning integration",
-      "Agentic coding workflows",
       "Aerial arts and new physical challenges",
       "Music composition and collaboration",
       "Community organizing and volunteer leadership"
@@ -330,6 +406,10 @@
       "I created Excel programs to automate neuropsychological test scoring",
       "Marni and I have matching bandanas",
       "Mr. Al is short for Alucard, named after the Castlevania video game character",
+      "Gave a cross-company AI talk to 242 people that was called 'one of the very few useful AI presentations'",
+      "Invented the !flag system — a keyboard command vocabulary for switching AI agent behavior without leaving the keyboard",
+      "Built the NERIS firefighter app with teammate Melissa using agentic coding — 98%+ of the code was AI-generated",
+      "Has played music live — a casual project with my husband and a close friend",
       "My husband and I watch 31 horror movies every October, one for each day",
       "I designed the background texture of this portfolio website based on my favorite Lake Superior agate",
       "My workspace has beds for both pets - Mr. Al has a window sill bed and Marni has one under my desk",
