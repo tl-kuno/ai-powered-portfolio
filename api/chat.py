@@ -67,7 +67,7 @@ class handler(BaseHTTPRequestHandler):
             messages.append({"role": "user", "content": chat_request.message})
 
             response = client.messages.create(
-                model="claude-sonnet-4-6",
+                model="claude-haiku-4-5-20251001",
                 system=system_prompt,
                 messages=messages,
                 max_tokens=200,
@@ -78,7 +78,7 @@ class handler(BaseHTTPRequestHandler):
             # needed
             if response.stop_reason == "max_tokens":
                 response = client.messages.create(
-                    model="claude-sonnet-4-6",
+                    model="claude-haiku-4-5-20251001",
                     system=system_prompt,
                     messages=messages,
                     max_tokens=300,
