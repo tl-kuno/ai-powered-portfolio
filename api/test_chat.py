@@ -97,39 +97,6 @@ class TestHTTPHandler:
         response_json = json.loads(written_data[0].decode('utf-8'))
         assert response_json['response'] == "Test response"
 
-    @patch('chat.anthropic.Anthropic')
-    @patch('chat.load_portfolio_data')
-    @patch('builtins.open', mock_open(read_data="System prompt: {portfolio_data}"))
-    def test_token_limit_retry_logic(self, mock_load_portfolio, mock_anthropic):
-        """Test that truncated responses trigger retry with more tokens"""
-        mock_load_portfolio.return_value = {"about_me": {"intro": "Test"}}
-        mock_client = MagicMock()
-        mock_anthropic.return_value = mock_client
-
-        first_response = self._make_mock_response(stop_reason="max_tokens")
-        second_response = self._make_mock_response("Complete response", stop_reason="end_turn")
-        mock_client.messages.create.side_effect = [first_response, second_response]
-
-        request_handler = self._create_mock_handler()
-        request_handler.headers = {'Content-Length': '25'}
-
-        test_data = json.dumps({"message": "Hello"}).encode()
-        request_handler.rfile.read.return_value = test_data
-
-        written_data = []
-        request_handler.wfile.write = lambda data: written_data.append(data)
-
-        with patch.dict(os.environ, {'ANTHROPIC_API_KEY': 'test_key'}):
-            request_handler.do_POST()
-
-        assert mock_client.messages.create.call_count == 2
-
-        calls = mock_client.messages.create.call_args_list
-        assert calls[0][1]['max_tokens'] == 200
-        assert calls[1][1]['max_tokens'] == 300
-
-        response_json = json.loads(written_data[0].decode('utf-8'))
-        assert response_json['response'] == "Complete response"
 
     @patch('chat.anthropic.Anthropic')
     @patch('chat.load_portfolio_data')

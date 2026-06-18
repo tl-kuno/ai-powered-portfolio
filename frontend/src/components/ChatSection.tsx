@@ -40,6 +40,14 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
 
+  useEffect(() => {
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'warmup', history: [] }),
+    }).catch(() => {});
+  }, []);
+
   const showPortfolioView = () => {
     setShowPortfolio(true);
   };

@@ -70,20 +70,9 @@ class handler(BaseHTTPRequestHandler):
                 model="claude-haiku-4-5-20251001",
                 system=system_prompt,
                 messages=messages,
-                max_tokens=200,
+                max_tokens=400,
                 temperature=0.6,
             )
-
-            # Check if response was cut off and retry with more tokens if
-            # needed
-            if response.stop_reason == "max_tokens":
-                response = client.messages.create(
-                    model="claude-haiku-4-5-20251001",
-                    system=system_prompt,
-                    messages=messages,
-                    max_tokens=300,
-                    temperature=0.6,
-                )
 
             # Send response
             self.send_response(200)
