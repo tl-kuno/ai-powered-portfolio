@@ -4,7 +4,7 @@
     "current_role": "Software Developer at Sansio in Duluth, Minnesota",
     "passion": "Using AI tools to learn faster and build better software, especially tools that help people document effectively in high-stress situations",
     "location": "Based in Duluth, Minnesota - love the North Shore and Lake Superior",
-    "background": "Before tech, I spent 7+ years working directly with people in high-stress situations as a psychometrist and youth counselor in a residential mental health program. That experience taught me how crucial good documentation tools are when someone's wellbeing is on the line."
+    "background": "Before tech, I spent 10+ years working directly with people in high-stress situations as a youth counselor and psychometrist in a residential mental health program. That experience taught me how crucial good documentation tools are when someone's wellbeing is on the line."
   },
   "work_experience": {
     "current_job": {
@@ -110,6 +110,17 @@
     }
   },
   "healthcare_background": {
+    "youth_counselor_experience": {
+      "organization": "Woodland Hills",
+      "roles": "Youth Care Counselor → Lead Youth Care Counselor → Senior Mental Health Practitioner",
+      "duration": "January 2016 - March 2018 (2 years, 3 months total)",
+      "population": "Youth ages 12-18 in residential placement",
+      "core_responsibilities": "Provided basic needs, maintained safety, guided youth using strength-based interventions, facilitated core skills groups, trained other staff in de-escalation techniques",
+      "crisis_management": "Learning to stay calm when someone else is escalating, showing comfort around people in vulnerable states to build trust and create safety",
+      "documentation_reality": "Had to do narrative documentation, often pen-and-paper during crisis situations, then write things up on computer later. It was challenging remembering details after time had passed - would have been useful to have better in-the-moment documentation tools",
+      "teamwork_insights": "Managing conflicting priorities of patient safety and documentation relied on established procedures and high levels of teamwork. Having well-defined processes that everyone was trained on was crucial for stepping into high-stress situations with everyone on the same page",
+      "connection_to_emt_work": "These experiences help me sympathize with EMT work and give me lived understanding of how having the right documentation system can make a big difference in patient outcomes"
+    },
     "psychometrist_role": {
       "organization": "Essentia Health",
       "role": "Psychometrist",
@@ -134,17 +145,6 @@
       "key_insight": "I saw the full spectrum of responses to new technology - some providers were already power users, others were excited to learn, and some struggled to shift their workflows for various reasons",
       "connection_to_current_work": "This experience directly informs how we're approaching AI tool adoption at Sansio. The one-on-one mentoring sessions were crucial for helping skeptical or less technical users trust the process and try something new",
       "lasting_impact": "Learned about the real difficulties of documentation and meeting patient needs, which motivates me to make our EMT software as user-friendly as possible"
-    },
-    "youth_counselor_experience": {
-      "organization": "Woodland Hills",
-      "roles": "Youth Care Counselor → Lead Youth Care Counselor → Senior Mental Health Practitioner",
-      "duration": "January 2016 - March 2018 (2 years, 3 months total)",
-      "population": "Youth ages 12-18 in residential placement",
-      "core_responsibilities": "Provided basic needs, maintained safety, guided youth using strength-based interventions, facilitated core skills groups, trained other staff in de-escalation techniques",
-      "crisis_management": "Learning to stay calm when someone else is escalating, showing comfort around people in vulnerable states to build trust and create safety",
-      "documentation_reality": "Had to do narrative documentation, often pen-and-paper during crisis situations, then write things up on computer later. It was challenging remembering details after time had passed - would have been useful to have better in-the-moment documentation tools",
-      "teamwork_insights": "Managing conflicting priorities of patient safety and documentation relied on established procedures and high levels of teamwork. Having well-defined processes that everyone was trained on was crucial for stepping into high-stress situations with everyone on the same page",
-      "connection_to_emt_work": "These experiences help me sympathize with EMT work and give me lived understanding of how having the right documentation system can make a big difference in patient outcomes"
     }
   },
   "volunteer_leadership": {
