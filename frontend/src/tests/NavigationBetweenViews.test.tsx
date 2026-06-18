@@ -15,7 +15,7 @@ describe('Navigation Between Views', () => {
       screen.getByPlaceholderText(/Ask about my experience/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Hey this is Taylor! Welcome to my site/)
+      screen.getByText(/Hi, I'm Taylor/)
     ).toBeInTheDocument();
 
     // Check that portfolio scroll hint is visible (indicates chat view)

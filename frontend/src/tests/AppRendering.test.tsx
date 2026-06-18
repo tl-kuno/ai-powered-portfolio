@@ -49,7 +49,7 @@ describe('App Component Rendering', () => {
     });
 
     // Should have the welcome message
-    expect(screen.getByText(/Hey this is Taylor!/)).toBeInTheDocument();
+    expect(screen.getByText(/Hi, I'm Taylor/)).toBeInTheDocument();
 
     // Should have chat input and send button
     expect(screen.getByRole('button')).toBeInTheDocument();
