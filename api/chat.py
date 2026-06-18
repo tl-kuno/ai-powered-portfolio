@@ -3,7 +3,7 @@ import json
 import os
 from typing import List
 
-from openai import OpenAI
+import anthropic
 from pydantic import BaseModel
 
 
@@ -45,8 +45,8 @@ class handler(BaseHTTPRequestHandler):
             print(f"Portfolio data loaded: {has_real_data}")
             print(f"Portfolio keys: {list(portfolio_data.keys()) if portfolio_data else 'None'}")
 
-            # Initialize OpenAI client
-            client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+            # Initialize Anthropic client
+            client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
             # Load system prompt from file
             with open('api/system_prompt.txt', 'r') as f:
@@ -57,7 +57,7 @@ class handler(BaseHTTPRequestHandler):
             )
 
             # Build message history
-            messages = [{"role": "system", "content": system_prompt}]
+            messages = []
 
             # Add conversation history
             for msg in chat_request.history:
@@ -66,8 +66,9 @@ class handler(BaseHTTPRequestHandler):
             # Add current message
             messages.append({"role": "user", "content": chat_request.message})
 
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
+            response = client.messages.create(
+                model="claude-sonnet-4-6",
+                system=system_prompt,
                 messages=messages,
                 max_tokens=200,
                 temperature=0.6,
@@ -75,9 +76,10 @@ class handler(BaseHTTPRequestHandler):
 
             # Check if response was cut off and retry with more tokens if
             # needed
-            if response.choices[0].finish_reason == "length":
-                response = client.chat.completions.create(
-                    model="gpt-4o-mini",
+            if response.stop_reason == "max_tokens":
+                response = client.messages.create(
+                    model="claude-sonnet-4-6",
+                    system=system_prompt,
                     messages=messages,
                     max_tokens=300,
                     temperature=0.6,
@@ -91,7 +93,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Headers', 'Content-Type')
             self.end_headers()
 
-            response_data = {"response": response.choices[0].message.content}
+            response_data = {"response": response.content[0].text}
             self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
         except Exception as e:
