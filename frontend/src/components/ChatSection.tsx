@@ -28,7 +28,7 @@ const ChatSection = ({ showPortfolio, setShowPortfolio }: ChatSectionProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hey this is Taylor! Welcome to my site :)\n\nAsk me anything about my work experience or personal projects. Or, if you would prefer, click below to explore my portfolio.',
+      text: "Hi, I'm Taylor — or at least the AI-powered version of her, trained on her actual work. Meta? Sure, but building the layer between AI and the people who use it is kind of my whole thing. Ask me about my projects, my path into tech, or how 10 years in human services turned into building software people didn't know they needed. Or scroll down to explore the portfolio yourself.",
       isUser: false,
       timestamp: new Date(),
     },

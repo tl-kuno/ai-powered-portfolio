@@ -112,7 +112,7 @@ describe('Message Sending', () => {
     fireEvent.click(sendButton);
 
     // Should still only have the welcome message
-    expect(screen.getByText(/Hey this is Taylor!/)).toBeInTheDocument();
+    expect(screen.getByText(/Hi, I'm Taylor/)).toBeInTheDocument();
 
     // Send button should remain disabled for empty input
     expect(sendButton).toBeDisabled();
