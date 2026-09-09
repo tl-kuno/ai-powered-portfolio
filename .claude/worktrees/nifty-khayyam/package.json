@@ -1,0 +1,7 @@
+{
+  "name": "ai-powered-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm run build"
+  }
+}

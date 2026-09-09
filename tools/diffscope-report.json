@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "repoPath": "/Users/taylor.kuno/dev/ai-powered-portfolio",
+    "baseBranch": "main",
+    "compareBranch": "addEmbeddings",
+    "commitCount": 3,
+    "authors": [
+      {
+        "name": "Taylor Kuno",
+        "commits": 3
+      }
+    ],
+    "latestCommitMsg": "\"Update WARP.md to document Pinecone embeddings architecture\"",
+    "totalAdded": 812,
+    "totalRemoved": 28,
+    "filesChanged": 6,
+    "totalFiles": 45,
+    "affectedModules": 6,
+    "riskCounts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 5
+    },
+    "generatedAt": "2026-02-26T19:50:43.303Z"
+  },
+  "codebase": {
+    "name": "root",
+    "children": [
+      {
+        "name": ".DS_Store",
+        "size": 154,
+        "lang": "other",
+        "path": ".DS_Store"
+      },
+      {
+        "name": ".eslintrc.js",
+        "size": 34,
+        "lang": "javascript",
+        "path": ".eslintrc.js"
+      },
+      {
+        "name": ".prettierignore",
+        "size": 5,
+        "lang": "other",
+        "path": ".prettierignore"
+      },
+      {
+        "name": ".prettierrc",
+        "size": 8,
+        "lang": "other",
+        "path": ".prettierrc"
+      },
+      {
+        "name": "README.md",
+        "size": 142,
+        "lang": "markdown",
+        "path": "README.md"
+      },
+      {
+        "name": "WARP.md",
+        "size": 243,
+        "lang": "markdown",
+        "path": "WARP.md"
+      },
+      {
+        "name": "api",
+        "children": [
+          {
+            "name": "chat.py",
+            "size": 158,
+            "lang": "python",
+            "path": "api/chat.py"
+          },
+          {
+            "name": "requirements.txt",
+            "size": 2,
+            "lang": "text",
+            "path": "api/requirements.txt"
+          },
+          {
+            "name": "system_prompt.txt",
+            "size": 111,
+            "lang": "text",
+            "path": "api/system_prompt.txt"
+          },
+          {
+            "name": "test_chat.py",
+            "size": 324,
+            "lang": "python",
+            "path": "api/test_chat.py"
+          }
+        ]
+      },
+      {
+        "name": "data",
+        "children": [
+          {
+            "name": "portfolio.json",
+            "size": 737,
+            "lang": "json",
+            "path": "data/portfolio.json"
+          }
+        ]
+      },
+      {
+        "name": "frontend",
+        "children": [
+          {
+            "name": "COMPONENTS.md",
+            "size": 74,
+            "lang": "markdown",
+            "path": "frontend/COMPONENTS.md"
+          },
+          {
+            "name": "eslint.config.js",
+            "size": 15,
+            "lang": "config",
+            "path": "frontend/eslint.config.js"
+          },
+          {
+            "name": "index.html",
+            "size": 105,
+            "lang": "html",
+            "path": "frontend/index.html"
+          },
+          {
+            "name": "package-lock.json",
+            "size": 4070,
+            "lang": "json",
+            "path": "frontend/package-lock.json"
+          },
+          {
+            "name": "package.json",
+            "size": 25,
+            "lang": "json",
+            "path": "frontend/package.json"
+          },
+          {
+            "name": "public",
+            "children": [
+              {
+                "name": "favicon.ico",
+                "size": 385,
+                "lang": "other",
+                "path": "frontend/public/favicon.ico"
+              },
+              {
+                "name": "images",
+                "children": [
+                  {
+                    "name": "agate-texture-black.png",
+                    "size": 7363,
+                    "lang": "other",
+                    "path": "frontend/public/images/agate-texture-black.png"
+                  },
+                  {
+                    "name": "headshot_hat_small.jpg",
+                    "size": 23797,
+                    "lang": "other",
+                    "path": "frontend/public/images/headshot_hat_small.jpg"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "children": [
+              {
+                "name": "App.css",
+                "size": 8,
+                "lang": "css",
+                "path": "frontend/src/App.css"
+              },
+              {
+                "name": "App.tsx",
+                "size": 12,
+                "lang": "react",
+                "path": "frontend/src/App.tsx"
+              },
+              {
+                "name": "components",
+                "children": [
+                  {
+                    "name": "ChatSection.css",
+                    "size": 189,
+                    "lang": "css",
+                    "path": "frontend/src/components/ChatSection.css"
+                  },
+                  {
+                    "name": "ChatSection.tsx",
+                    "size": 493,
+                    "lang": "react",
+                    "path": "frontend/src/components/ChatSection.tsx"
+                  },
+                  {
+                    "name": "ExperienceCard.css",
+                    "size": 81,
+                    "lang": "css",
+                    "path": "frontend/src/components/ExperienceCard.css"
+                  },
+                  {
+                    "name": "ExperienceCard.tsx",
+                    "size": 88,
+                    "lang": "react",
+                    "path": "frontend/src/components/ExperienceCard.tsx"
+                  },
+                  {
+                    "name": "PortfolioSection.css",
+                    "size": 47,
+                    "lang": "css",
+                    "path": "frontend/src/components/PortfolioSection.css"
+                  },
+                  {
+                    "name": "PortfolioSection.tsx",
+                    "size": 268,
+                    "lang": "react",
+                    "path": "frontend/src/components/PortfolioSection.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "index.css",
+                "size": 46,
+                "lang": "css",
+                "path": "frontend/src/index.css"
+              },
+              {
+                "name": "main.tsx",
+                "size": 6,
+                "lang": "react",
+                "path": "frontend/src/main.tsx"
+              },
+              {
+                "name": "setupTests.ts",
+                "size": 8,
+                "lang": "typescript",
+                "path": "frontend/src/setupTests.ts"
+              },
+              {
+                "name": "tests",
+                "children": [
+                  {
+                    "name": "AppRendering.test.tsx",
+                    "size": 43,
+                    "lang": "react",
+                    "path": "frontend/src/tests/AppRendering.test.tsx"
+                  },
+                  {
+                    "name": "ChatInput.test.tsx",
+                    "size": 56,
+                    "lang": "react",
+                    "path": "frontend/src/tests/ChatInput.test.tsx"
+                  },
+                  {
+                    "name": "MessageSending.test.tsx",
+                    "size": 99,
+                    "lang": "react",
+                    "path": "frontend/src/tests/MessageSending.test.tsx"
+                  },
+                  {
+                    "name": "NavigationBetweenViews.test.tsx",
+                    "size": 187,
+                    "lang": "react",
+                    "path": "frontend/src/tests/NavigationBetweenViews.test.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "vite-env.d.ts",
+                "size": 1,
+                "lang": "typescript",
+                "path": "frontend/src/vite-env.d.ts"
+              }
+            ]
+          },
+          {
+            "name": "tsconfig.app.json",
+            "size": 18,
+            "lang": "json",
+            "path": "frontend/tsconfig.app.json"
+          },
+          {
+            "name": "tsconfig.json",
+            "size": 3,
+            "lang": "json",
+            "path": "frontend/tsconfig.json"
+          },
+          {
+            "name": "tsconfig.node.json",
+            "size": 16,
+            "lang": "json",
+            "path": "frontend/tsconfig.node.json"
+          },
+          {
+            "name": "vite.config.ts",
+            "size": 7,
+            "lang": "config",
+            "path": "frontend/vite.config.ts"
+          }
+        ]
+      },
+      {
+        "name": "package-lock.json",
+        "size": 3648,
+        "lang": "json",
+        "path": "package-lock.json"
+      },
+      {
+        "name": "package.json",
+        "size": 3,
+        "lang": "json",
+        "path": "package.json"
+      },
+      {
+        "name": "requirements.txt",
+        "size": 1,
+        "lang": "text",
+        "path": "requirements.txt"
+      },
+      {
+        "name": "scripts",
+        "children": [
+          {
+            "name": "test_retrieval.py",
+            "size": 68,
+            "lang": "python",
+            "path": "scripts/test_retrieval.py"
+          },
+          {
+            "name": "upload_embeddings.py",
+            "size": 377,
+            "lang": "python",
+            "path": "scripts/upload_embeddings.py"
+          }
+        ]
+      },
+      {
+        "name": "vercel.json",
+        "size": 8,
+        "lang": "json",
+        "path": "vercel.json"
+      }
+    ]
+  },
+  "changes": {
+    "WARP.md": {
+      "added": 225,
+      "removed": 0,
+      "risk": "low",
+      "reason": "change magnitude"
+    },
+    "api/chat.py": {
+      "added": 96,
+      "removed": 25,
+      "risk": "low",
+      "reason": "change magnitude"
+    },
+    "api/requirements.txt": {
+      "added": 2,
+      "removed": 1,
+      "risk": "low",
+      "reason": "change magnitude"
+    },
+    "api/system_prompt.txt": {
+      "added": 5,
+      "removed": 2,
+      "risk": "low",
+      "reason": "change magnitude"
+    },
+    "scripts/test_retrieval.py": {
+      "added": 92,
+      "removed": 0,
+      "risk": "low",
+      "reason": "test file"
+    },
+    "scripts/upload_embeddings.py": {
+      "added": 392,
+      "removed": 0,
+      "risk": "medium",
+      "reason": "change magnitude"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+venv/
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Coverage
+coverage/
+
+# Documentation
+docs/
